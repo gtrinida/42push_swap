@@ -3,7 +3,8 @@
 void	swap_hg(t_stack **stack)
 {
 	t_stack *tmp;
-
+	if (*stack == NULL || (*stack)->next == NULL)
+		return ;
 	tmp = *stack;
 	if (tmp->next)
 	{
@@ -17,19 +18,20 @@ void	swap_hg(t_stack **stack)
 void up_stack(t_stack **stack)
 {
 	t_stack *tmp;
-
+	if (*stack == NULL || (*stack)->next == NULL)
+		return ;
 	tmp = *stack;
 	add_new_node(stack, (*stack)->val);
 	*stack = (*stack)->next;
 	free(tmp);
 }
 
-void	go_down(t_stack **stack)
+void	down_stack(t_stack **stack)
 {
 	t_stack *tmp;
 	int	i;
 
-	if(!*(stack))
+	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
 	i = 0;
 	tmp = *stack;
@@ -54,16 +56,15 @@ t_stack	*create_node(int val)
 	node = malloc(sizeof(t_stack));
 	node->next = NULL;
 	node->val = val;
+
 	return(node);
 }
-
 
 void	add_new_node(t_stack **head, int val)
 {
 	t_stack	*tmp;
-
 	if (!*head)
-	{
+	{	
 		*head = create_node(val);
 		return ;
 	}
@@ -71,4 +72,11 @@ void	add_new_node(t_stack **head, int val)
 	while (tmp->next)
 		tmp = tmp->next;
 	tmp->next = create_node(val);
+}
+void	add_new_node_reverse(t_stack **head, int val)
+{
+	t_stack *new_node;
+	new_node = create_node(val);
+	new_node->next = *head;
+	*head = new_node;
 }

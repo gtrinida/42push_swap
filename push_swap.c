@@ -70,6 +70,11 @@ void	free_stack(t_stack **A)
 
 void	print(t_stack *A)
 {
+	if(!A)
+	{
+		printf("Nothing\n");
+		return ;
+	}
 	while (A->next)
 	{
 		printf("%d ", A->val);
@@ -78,30 +83,29 @@ void	print(t_stack *A)
 	printf("%d \n", A->val);
 }
 
-void	add_new_node_reverse(t_stack **head, int val)
-{
-	t_stack *new_node;
-	new_node = create_node(val);
-	new_node->next = *head;
-	*head = new_node;
-}
 
 int main(int argc, char **arvg)
 {
-	t_stack *A = NULL;
+	t_basik *stacks;
 
 	int tmp;
 	int i;
-
+	stacks = malloc(sizeof(t_basik));
+	if (!stacks)
+		return 0;
+	stacks->a = NULL;
+	stacks->b = NULL;
 	i = 1;
+
 	while (i < argc)
 	{
 		tmp = ft_atoi(arvg[i]);
-		add_new_node(&A, tmp);
+		add_new_node(&(stacks->a), tmp);
 		i++;
 	}
-    ft_rrb(&A);
-	print(A);
-	free_stack(&A);
+	ft_sa(stacks);
+	print(stacks->a);
+	print(stacks->b);
+	free_stack(&stacks->a);
 	return (0);
 }
