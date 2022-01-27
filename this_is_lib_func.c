@@ -168,3 +168,111 @@ char	**ft_split(const char *s, char c)
 	}
 	return (strings);
 }
+int	ft_nonspace(char c)
+{
+	return (c == '\t' || c == '\v' || c == '\f'
+		|| c == '\r' || c == '\n' || c == ' ');
+}
+
+int	ft_checklong(int result, int term, int sign)
+{
+	long long int	res;
+
+	res = result;
+	res = result * 10 + term;
+	if (sign == 1)
+	{
+		if (res > 2147483647)
+			return (-1);
+	}
+	if (sign == -1)
+	{
+		if (res < -2147483648)
+			return (0);
+	}
+	return (1);
+}
+
+int	ft_atoi(const char *str)
+{
+	int	i;
+	int	sign;
+	int	result;
+
+	i = 0;
+	sign = 1;
+	result = 0;
+	while (str[i] && ft_nonspace(str[i]))
+		i++;
+	if (str[i] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+	else if (str[i] == '+')
+		i++;
+	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
+	{
+		if (ft_checklong(result, (str[i] - '0'), sign) != 1)
+			return (ft_checklong(result, (str[i] - '0'), sign));
+		result = result * 10 + (str[i] - '0');
+		i++;
+	}
+	return (result * sign);
+}
+
+int	ft_isdigit(int character)
+{
+	return (character >= '0' && character <= '9');
+}
+
+static int	ft_issign(int c)
+{
+	return ((char)c == '-' || (char)c == '+');
+}
+
+static int	ft_iswhitespace(int c)
+{
+	return ((char)c == '\t' || (char)c == '\v' || (char)c == '\f'
+		|| (char)c == '\r' || (char)c == '\n' || (char)c == ' ');
+}
+
+static	int	ft_checkoverflow(int res, int term, int sign)
+{
+	long long int	result;
+
+	result = res;
+	result = (result * 10) + term;
+	result = result * sign;
+	if (result > +2147483647)
+		return (-1);
+	else if (result < -2147483648)
+		return (0);
+	return (1);
+}
+
+int	ft_atoi_overflow(const char *str, int *overflow)
+{
+	int	i;
+	int	res;
+	int	sign;
+
+	i = 0;
+	res = 0;
+	sign = 1;
+	while (str[i] != '\0' && ft_iswhitespace(str[i]))
+		i++;
+	if (str[i] != '\0' && ft_issign(str[i]))
+	{
+		if (str[i++] == '-')
+			sign *= -1;
+	}
+	while (str[i] != '\0' && ft_isdigit(str[i]))
+	{
+		if (ft_checkoverflow(res, (str[i] - '0'), sign) != 1)
+			return(*overflow = *overflow - 2);
+		res = res * 10 + (str[i] - '0');
+		i++;
+	}
+	return (res * sign);
+}

@@ -23,7 +23,8 @@ char	*ft_strrchr(const char *string, int c);
 void	*ft_calloc(size_t sym, size_t onesymsize);
 size_t	ft_strlen(const char *str);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-
+int	ft_atoi_overflow(const char *str, int *overflow);
+int	ft_atoi(const char *str);
 //Это новые функции
 void	ft_sa(t_basik *stack);
 void	ft_sb(t_basik *stack);
