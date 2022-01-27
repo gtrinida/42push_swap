@@ -84,6 +84,7 @@ void	print(t_stack *A)
 }
 
 
+
 int main(int argc, char **arvg)
 {
 	t_basik *stacks;
@@ -103,7 +104,7 @@ int main(int argc, char **arvg)
 		add_new_node(&(stacks->a), tmp);
 		i++;
 	}
-	ft_sa(stacks);
+	ft_ra(stacks);
 	print(stacks->a);
 	print(stacks->b);
 	free_stack(&stacks->a);

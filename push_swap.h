@@ -17,7 +17,14 @@ typedef	struct s_basic
 	t_stack *b;
 
 }t_basik;
+//Это функции либы
+char	**ft_split(const char *s, char c);
+char	*ft_strrchr(const char *string, int c);
+void	*ft_calloc(size_t sym, size_t onesymsize);
+size_t	ft_strlen(const char *str);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 
+//Это новые функции
 void	ft_sa(t_basik *stack);
 void	ft_sb(t_basik *stack);
 void	ft_ss(t_basik *stacks);
@@ -35,5 +42,6 @@ void	down_stack(t_stack **stack);
 void	swap_hg(t_stack **stack);
 t_stack	*create_node(int val);
 void	up_stack(t_stack **stack);
+int ft_verification(char **av);
 
 #endif

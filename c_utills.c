@@ -12,7 +12,6 @@ void	swap_hg(t_stack **stack)
 		tmp->next = (*stack)->next;
 		(*stack)->next = tmp;
 	}
-	return ;
 }
 
 void up_stack(t_stack **stack)
@@ -48,6 +47,7 @@ void	down_stack(t_stack **stack)
 		i--;
 	}
 	tmp->next = NULL;
+	free(tmp);
 }
 
 t_stack	*create_node(int val)
