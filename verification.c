@@ -45,7 +45,7 @@ int check_zero(const char *str)
 	{
 		if (!is_first && str[i] >= '1' && str[i] <= '9')
 			return (1);
-		if (str[i] >= '0' && str[i] <= '9')
+		if (str[i] >= '0')
 		{
 			is_first = 1;
 		}
@@ -54,6 +54,35 @@ int check_zero(const char *str)
 		i++;
 	}
 	return (1);
+}
+
+void	ft_initialization(t_basik *basic)
+{
+	basic->a = NULL;
+	basic->b = NULL;
+	basic->max = -2147483648;
+	basic->min = 2147483647;
+}
+
+int check_int_utils(char **av, int *i, int j)
+{
+	while (av[*i][j] == '\t' || av[*i][j] == ' ')
+		j++;
+	if(av[*i][j] == '-' || av[*i][j] == '+')
+	{
+		j++;
+		if(av[*i][j] > '9' || av[*i][j] < '0')
+			return(-1);
+	}	
+	while (av[*i][j] <= '9' && av[*i][j] >= '0')
+		j++;	
+	while (av[*i][j])
+	{
+		if(av[*i][j] != '\t' || av[*i][j] != ' ')
+			return (-1);
+		j++;
+	}
+	return(0);
 }
 
 int check_int(char **av)
@@ -69,23 +98,9 @@ int check_int(char **av)
 		check = check_zero(av[i]);
 		if(check == -1)
 			return (-1);
-		while (av[i][j] == '\t' || av[i][j] == ' ')
-			j++;
-		if(av[i][j] == '-' || av[i][j] == '+')
-		{
-			j++;
-			if(av[i][j] > '9' || av[i][j] < '0')
-				return(-1);
-		}	
-		while (av[i][j] <= '9' && av[i][j] >= '0')
-			j++;	
-		while (av[i][j])
-		{
-			if(av[i][j] != '\t' || av[i][j] != ' ')
-				return (-1);
-			j++;
-		}
-		j = 0;
+		check = check_int_utils(av, &i, j);
+		if(check == -1)
+			return (-1);
 		i++;
 	}
 	return(1);
@@ -115,7 +130,7 @@ int check_double(char **av)
 	return(1);
 }
 
-int	ft_verification(char **av)
+int	ft_verification_third(char **av)
 {	
 	if (check_int(av) == -1)
 		return(-1);
@@ -126,36 +141,42 @@ int	ft_verification(char **av)
 	return(1);	
 }
 
-int main(int argc, char **argv)
+int ft_verification_second(char **argv, int *i, int j)
+{
+	int		condition;
+	char	**split;
+
+	split = ft_split(argv[*i], ' ');
+	while (split[j])
+	{
+		condition =	ft_verification_third(split);
+		if (condition == -1)
+		{
+			write(1, "Error\n", 6);
+			return(-1);
+		}
+		j++;
+	}
+	ft_strsfree(split);
+	return (0);
+}
+
+int ft_verification(char **argv)
 {
 	int condition;
 	int i;
 	int j;
-	char **split;
+	
 
 	j = 0;
 	i = 1;
 	
-	if (argc < 2)
-		return (0);
 	while (argv[i])
-	{	
-		split = ft_split(argv[i], ' ');
-
-		while (split[j])
-		{
-			condition =	ft_verification(split);
-			if (condition == -1)
-			{
-				printf("Error\n");
-				return(-1);
-			}
-			j++;
-		}
-		ft_strsfree(split);
-		j = 0;
+	{
+		condition =	ft_verification_second(argv, &i, j);
+		if (condition == -1)
+			return (1);
 		i++;
 	}
-	printf("Nice\n");
 	return 0;
 }
