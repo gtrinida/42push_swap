@@ -106,30 +106,6 @@ int check_int(char **av)
 	return(1);
 }
 
-int check_double(char **av)
-{
-	int tmp;
-	int next;
-	int	i;
-	int j;
-	
-	i = 1;
-	j = 2;
-	while (av[i])
-	{
-		tmp = ft_atoi(av[i]);
-		while (av[j])
-		{
-			next = ft_atoi(av[j]);
-			if (tmp == next)
-				return (-1);
-			j++;
-		}
-		i++;
-	}
-	return(1);
-}
-
 int	ft_verification_third(char **av)
 {	
 	if (check_int(av) == -1)
