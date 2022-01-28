@@ -28,6 +28,7 @@ int		ft_atoi_overflow(const char *str, int *overflow);
 int		ft_atoi(const char *str);
 //Это новые функции
 void	ft_strsfree(char **strs);
+void	free_stack(t_stack **A);
 void	ft_initialization(t_basik *basic);
 void	ft_sa(t_basik *stack);
 void	ft_sb(t_basik *stack);
