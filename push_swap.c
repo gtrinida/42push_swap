@@ -41,11 +41,24 @@ int main(int argc, char **argv)
 	if (!stacks)
 		return (0);
 	ft_initialization(stacks);
-	if(!ft_verification(argv))
+	if(!ft_verification(argv, stacks))
 	{
-		write(1, "Nice\n", 5);
-		return(0);
+		ft_sa(stacks);
+		ft_pb(stacks);
+		ft_pb(stacks);
+		ft_pb(stacks);
+		ft_rr(stacks);
+		ft_rrr(stacks);
+		ft_sa(stacks);
+		ft_pa(stacks);
+		ft_pa(stacks);
+		ft_pa(stacks);
+		print(stacks->a);
+		print(stacks->b);
+		free_stack(&stacks->a);
 	}	
+
+	return (0);
 }
 
 // int main(int argc, char **arvg)

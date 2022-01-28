@@ -3,10 +3,9 @@
 void	ft_pb(t_basik *stacks)
 {
 	t_stack *tmp;
-	int		val;
+
 	if (stacks->a == NULL)
 		return ;
-	val = stacks->a->val;
 	tmp = stacks->a;
 	stacks->a = stacks->a->next;
 	add_new_node_reverse(&(stacks->b), tmp->val);
@@ -16,10 +15,9 @@ void	ft_pb(t_basik *stacks)
 void	ft_pa(t_basik *stacks)
 {
 	t_stack *tmp;
-	int		val;
+
 	if (stacks->b == NULL)
 		return ;
-	val = stacks->b->val;
 	tmp = stacks->b;
 	stacks->b = stacks->b->next;
 	add_new_node_reverse(&(stacks->a), tmp->val);

@@ -25,6 +25,16 @@ void up_stack(t_stack **stack)
 	free(tmp);
 }
 
+t_stack	*create_node(int val)
+{
+	t_stack *node;
+	node = malloc(sizeof(t_stack));
+	node->next = NULL;
+	node->val = val;
+
+	return(node);
+}
+
 void	down_stack(t_stack **stack)
 {
 	t_stack *tmp;
@@ -47,17 +57,6 @@ void	down_stack(t_stack **stack)
 		i--;
 	}
 	tmp->next = NULL;
-	free(tmp);
-}
-
-t_stack	*create_node(int val)
-{
-	t_stack *node;
-	node = malloc(sizeof(t_stack));
-	node->next = NULL;
-	node->val = val;
-
-	return(node);
 }
 
 void	add_new_node(t_stack **head, int val)

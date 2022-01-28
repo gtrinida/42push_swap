@@ -24,9 +24,10 @@ char	*ft_strrchr(const char *string, int c);
 void	*ft_calloc(size_t sym, size_t onesymsize);
 size_t	ft_strlen(const char *str);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-int	ft_atoi_overflow(const char *str, int *overflow);
-int	ft_atoi(const char *str);
+int		ft_atoi_overflow(const char *str, int *overflow);
+int		ft_atoi(const char *str);
 //Это новые функции
+void	ft_strsfree(char **strs);
 void	ft_initialization(t_basik *basic);
 void	ft_sa(t_basik *stack);
 void	ft_sb(t_basik *stack);
@@ -45,9 +46,12 @@ void	down_stack(t_stack **stack);
 void	swap_hg(t_stack **stack);
 t_stack	*create_node(int val);
 void	up_stack(t_stack **stack);
-int ft_verification(char **av);
-int ft_verification_second(char **argv, int *i, int j);
+int 	ft_verification(char **argv, t_basik *stacks);
+int 	ft_verification_second(char **argv, int *i, int j, t_basik *stacks);
 int	ft_verification_third(char **av);
-
+int 	check_long(char **av);
+int 	check_zero(const char *str);
+int 	check_int_utils(char **av, int *i, int j);
+int 	check_int(char **av);
 
 #endif
