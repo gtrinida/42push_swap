@@ -4,15 +4,21 @@
 int	check_double(t_stack *A)
 {
 	t_stack *tmp;
+	t_stack *temp;
 	int		dublicate;
-	
-	tmp = A;
-	dublicate = tmp->val;
-	while (tmp->next)
+
+	temp = A;
+	while (temp->next)
 	{
-		tmp = tmp->next;
-		if (dublicate == tmp->val)
-			return(-1);
+		tmp = temp;
+		dublicate = temp->val;
+		while (tmp->next)
+		{
+			tmp = tmp->next;
+			if (dublicate == tmp->val)
+				return (-1);
+		}
+		temp = temp->next;
 	}
 	return (1);
 }
