@@ -54,5 +54,9 @@ int 	check_long(char **av);
 int 	check_zero(const char *str);
 int 	check_int_utils(char **av, int *i, int j);
 int 	check_int(char **av);
+void	ft_analysis(t_basik *stack);
+int ft_check_values(t_basik *stack);
+int	ft_check_len(t_stack *stack);
+void	ft_sort(t_basik *stack);
 
 #endif

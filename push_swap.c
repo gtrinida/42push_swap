@@ -43,46 +43,13 @@ int main(int argc, char **argv)
 	ft_initialization(stacks);
 	if(!ft_verification(argv, stacks))
 	{
-		ft_sa(stacks);
-		ft_pb(stacks);
-		ft_pb(stacks);
-		ft_pb(stacks);
-		ft_rr(stacks);
-		ft_rrr(stacks);
-		ft_sa(stacks);
-		ft_pa(stacks);
-		ft_pa(stacks);
-		ft_pa(stacks);
+		ft_analysis(stacks);
+		// printf("stacks min: %d\n", stacks->min);
+		// printf("stacks max: %d\n", stacks->max);
 		print(stacks->a);
-		print(stacks->b);
+	//	print(stacks->b);
 		free_stack(&stacks->a);
 	}	
 
 	return (0);
 }
-
-// int main(int argc, char **arvg)
-// {
-// 	t_basik *stacks;
-
-// 	int tmp;
-// 	int i;
-// 	stacks = malloc(sizeof(t_basik));
-// 	if (!stacks)
-// 		return 0;
-// 	stacks->a = NULL;
-// 	stacks->b = NULL;
-// 	i = 1;
-
-// 	while (i < argc)
-// 	{
-// 		tmp = ft_atoi(arvg[i]);
-// 		add_new_node(&(stacks->a), tmp);
-// 		i++;
-// 	}
-// 	ft_ra(stacks);
-// 	print(stacks->a);
-// 	print(stacks->b);
-// 	free_stack(&stacks->a);
-// 	return (0);
-// }
