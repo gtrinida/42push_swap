@@ -1,5 +1,28 @@
 #include "push_swap.h"
 
+void ft_sort_final(t_basik *stack)
+{
+	t_stack *B;
+	int	val;
+
+	B = stack->b;
+	val = B->val;
+	B = B->next;
+	if (B->val > val)
+	{
+		ft_pa(stack);
+		ft_pa(stack);
+		ft_ra(stack);
+	}
+	if(B->val < val)
+	{
+		ft_pa(stack);
+		ft_ra(stack);
+		ft_pa(stack);
+	}
+	return ;
+}
+
 void push_min_max(t_basik *stack, t_stack **A, int flag)
 {
 	if ((*A)->val == stack->max)
@@ -37,11 +60,11 @@ void	ft_sort_four_five(t_basik *stack)
 	if (!ft_is_sorted(stack))
 	{
 		len = ft_check_values(stack);
-		printf("New max: %d\n", stack->max);
 		if (len == 3)
 			ft_sort_three(stack);
 		if (len == 2)
 			ft_sa(stack);
 	}	
+	ft_sort_final(stack);
 }
 
