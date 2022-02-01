@@ -60,8 +60,9 @@ void	ft_analysis(t_basik *stack)
 		if (len == 2)
 			ft_sa(stack);
 		if (len == 3)
-			ft_sort(stack);
-	}	
-	printf("len is: %d\n", len);
+			ft_sort_three(stack);
+		if (len == 4 || len == 5)
+			ft_sort_four_five(stack);
+	}
 	return;
 }

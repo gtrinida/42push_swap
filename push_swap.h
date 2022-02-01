@@ -57,6 +57,8 @@ int 	check_int(char **av);
 void	ft_analysis(t_basik *stack);
 int ft_check_values(t_basik *stack);
 int	ft_check_len(t_stack *stack);
-void	ft_sort(t_basik *stack);
+void	ft_sort_three(t_basik *stack);
+void	ft_sort_four_five(t_basik *stack);
+int ft_is_sorted(t_basik *stack);
 
 #endif

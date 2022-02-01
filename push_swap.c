@@ -47,7 +47,7 @@ int main(int argc, char **argv)
 		// printf("stacks min: %d\n", stacks->min);
 		// printf("stacks max: %d\n", stacks->max);
 		print(stacks->a);
-	//	print(stacks->b);
+		print(stacks->b);
 		free_stack(&stacks->a);
 	}	
 
