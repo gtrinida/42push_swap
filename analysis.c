@@ -63,6 +63,8 @@ void	ft_analysis(t_basik *stack)
 			ft_sort_three(stack);
 		if (len == 4 || len == 5)
 			ft_sort_four_five(stack);
+		if (len > 5)
+			ft_sort_large(stack, len);
 	}
 	return;
 }
