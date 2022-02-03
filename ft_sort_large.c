@@ -1,5 +1,66 @@
 #include "push_swap.h"
 
+int	ft_opimal_way(int len)
+{
+	int way;
+
+	way = len / 2;
+	return (way);
+}
+int ft_stack_len(t_basik *stack, int d)
+{
+	t_stack *A;
+	t_stack *B;
+	int i;
+
+	i = 0;
+	A = stack->a;
+	B = stack->b;
+	if (d == 1)
+	{
+		while (A)
+		{
+			A = A->next;
+			i++;
+		}
+	}
+	if (d == 2)
+	{
+		while (B)
+		{
+			B = B->next;
+			i++;
+		}
+	}
+	return (i);
+}
+
+void ft_up_or_down(t_stack *stack, int optimal_way)
+{
+	if (stack->index > optimal_way)
+	{
+		stack->direction = -1;
+	}
+	else //вверх
+		stack->direction = 1;
+}
+
+int ft_steps_to_A_final(t_basik *stack, int index)
+{
+	t_stack *A;
+	int		len;
+	int		way;
+	A = stack->a;
+
+	len = ft_stack_len(stack, 1);
+	way = ft_opimal_way(len);
+	ft_up_or_down(A, way);
+	if (index > way)
+		return(len - index);
+	else
+		return(index);
+}
+
 int	ft_steps_to_A_utils(t_basik *stack)
 {
 	t_stack	*A;
@@ -29,11 +90,13 @@ int	ft_steps_to_A_utils(t_basik *stack)
 	}
 	return (-1);
 }
-void	ft_steps_to_A(t_basik *stack)
+
+int	ft_steps_to_A(t_basik *stack)
 {
 	t_stack *B;
 	t_stack *A;
 	int		index;
+	int		steps;
 	B = stack->b;
 	A = stack->a;
 	while (A->next)
@@ -44,45 +107,9 @@ void	ft_steps_to_A(t_basik *stack)
 	}
 	A = stack->a;
 	index = ft_steps_to_A_utils(stack);
-	printf("index is: %d\n", index);
-}
-
-void ft_up_or_down(t_stack *stack, int optimal_way)
-{
-	if (stack->index > optimal_way)
-	{
-		stack->direction = -1;
-	}
-	else //вверх
-		stack->direction = 1;
-}
-
-int ft_stack_len(t_basik *stack, int d)
-{
-	t_stack *A;
-	t_stack *B;
-	int i;
-
-	i = 0;
-	A = stack->a;
-	B = stack->b;
-	if (d == 1)
-	{
-		while (A)
-		{
-			A = A->next;
-			i++;
-		}
-	}
-	if (d == 2)
-	{
-		while (B)
-		{
-			B = B->next;
-			i++;
-		}
-	}
-	return (i);
+	steps =	ft_steps_to_A_final(stack, index);
+//	printf("%d\n", steps);
+	return(steps);
 }
 
 void	ft_get_index(t_basik *stack)
@@ -116,27 +143,20 @@ void	ft_get_index(t_basik *stack)
 	B = stack->b;
 }
 
-int	ft_opimal_way(int len)
-{
-	int way;
-
-	way = len / 2;
-	return (way);
-}
-
-
 void	ft_b(t_basik *stack)
 {
 	int optimal_way;
 	int len;
+	int stepsA;
 
 	len = ft_stack_len(stack, 2);
 	optimal_way = ft_opimal_way(len);
 	ft_get_index(stack);
 	ft_up_or_down(stack->b, optimal_way);
-	ft_steps_to_A(stack); 
-
+	stepsA = ft_steps_to_A(stack); 
+	printf("Comands needs in A: %d\n", stepsA);
 }
+
 void	ft_sort_large(t_basik *stack, int len)
 {
 	t_stack **A;
