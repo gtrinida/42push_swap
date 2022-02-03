@@ -10,6 +10,8 @@ typedef struct s_stack
 	int		val;
 	void	*next;
 	int		index;
+	int		direction;
+	int		larger;
 }t_stack;
 
 typedef	struct s_basic
@@ -19,6 +21,8 @@ typedef	struct s_basic
 	int		min;
 	int		max;
 }t_basik;
+//Функция для тестов
+void	print(t_stack *A);
 //Это функции либы
 char	**ft_split(const char *s, char c);
 char	*ft_strrchr(const char *string, int c);
