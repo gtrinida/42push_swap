@@ -11,6 +11,7 @@ typedef struct s_stack
 	void	*next;
 	int		index;
 	int		direction;
+	int		total;
 	int		larger;
 }t_stack;
 
