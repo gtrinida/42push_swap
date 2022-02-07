@@ -46,14 +46,10 @@ void ft_up_or_down(t_stack *stack, int optimal_way)
 		stack->direction = 1;
 }
 
-int	ft_steps_B(t_basik *stack)
+int	ft_steps_B(t_stack *B, int len)
 {
-	t_stack *B;
-	int		len;
 	int		middle;
-	
-	B = stack->b;
-	len = ft_stack_len(stack, 2);
+
 	middle	= ft_middle(len);
 	len = len + 1;
 	if (B->index > middle)
@@ -62,7 +58,18 @@ int	ft_steps_B(t_basik *stack)
 		return(B->index + 1);
 }
 
+// int	ft_steps_b(t_stack *B, int len)
+// {
+// 	int middle;
 
+// 	middle = ft_middle(len);
+// 	len = len + 1;
+// 	if (B->index > middle)
+// 		return(len - B->index);
+// 	else
+// 		return(B->index + 1);
+
+// }
 int ft_steps_to_A_final(t_basik *stack, int index)
 {
 	t_stack *A;
@@ -109,14 +116,18 @@ int	ft_steps_to_A_utils(t_basik *stack)
 	return (-1);
 }
 
-int	ft_steps_to_A(t_basik *stack)
+int	ft_steps_to_A(t_basik *stack, t_stack *B)
 {
-	t_stack *B;
 	t_stack *A;
 	int		index;
 	int		steps;
 
-	B = stack->b;
+	A = stack->a;
+	while (A->next)
+	{
+		A->larger = 0;
+		A = A->next;
+	}
 	A = stack->a;
 	while (A->next)
 	{
@@ -129,6 +140,31 @@ int	ft_steps_to_A(t_basik *stack)
 	steps =	ft_steps_to_A_final(stack, index);
 //	printf("steps in A: %d\n", steps);
 	return(steps);
+}
+
+void	ft_steps_to_a_for_all(t_basik *stack)
+{
+	t_stack *B;
+	int		len_b;
+	int 	len;
+	B = stack->b;
+	len_b = ft_stack_len(stack, 2);
+	while (len_b)
+	{	
+		B->total = ft_steps_to_A(stack, B);
+
+		B = B->next;
+		len_b--;
+	}
+	B = stack->b;
+	len_b = ft_stack_len(stack, 2);
+	len = len_b;
+	while(len_b)
+	{
+		B->total += ft_steps_B(B, len);	
+		B = B->next;
+		len_b--;
+	}
 }
 
 void	ft_get_index_utils(t_basik *stack)
@@ -173,22 +209,19 @@ void	ft_b(t_basik *stack)
 {
 	int middle;
 	int len_b;
-	int steps_a;
-	int	steps_b;
-//	t_stack *B;
-
-//	B = stack->b;
+	t_stack *B = stack->b;
 	len_b = ft_stack_len(stack, 2);
 	middle = ft_middle(len_b);
 	ft_get_index(stack);
 	ft_up_or_down(stack->b, middle);
+	ft_steps_to_a_for_all(stack);
+	while (len_b)
+	{
+		printf("Comdands: %d\n", B->total);
+		B = B->next;
+		len_b--;
+	}
 	
-	steps_a = ft_steps_to_A(stack);
-	steps_b = ft_steps_B(stack);
-//	B = stack->b;
-	
-	stack->b->total = steps_b + steps_a;
-	printf("Comands needs in total: %d\n", stack->b->total);
 }
 
 void	ft_sort_large(t_basik *stack, int len)
@@ -207,8 +240,10 @@ void	ft_sort_large(t_basik *stack, int len)
 	if ((*A)->val != stack->max)
 		ft_sa(stack);
 	ft_pa(stack);
+
 	if(stack->b)
 	{
 		ft_b(stack);
 	}
+
 }
