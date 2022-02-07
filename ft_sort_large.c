@@ -107,7 +107,12 @@ int	ft_steps_to_A_utils(t_basik *stack)
 	
 	flag = 0;
 	A = stack->a;
-
+	while (A->next)
+	{
+		A->put_here = 0;
+		A = A->next;
+	}
+	A = stack->a;
 	while (A->next)
 	{
 		if(A->larger == 1 && !flag)
@@ -123,7 +128,11 @@ int	ft_steps_to_A_utils(t_basik *stack)
 	while (A->next)
 	{
 		if (A->val == temp)
+		{
+//			printf("This is optimal A %d\n", A->index);
+			A->put_here = 1;
 			return(A->index);
+		}
 		A = A->next;
 	}
 	return (-1);
@@ -165,7 +174,6 @@ void	ft_steps_to_a_for_all(t_basik *stack)
 	while (len_b)
 	{	
 		B->total = ft_steps_to_A(stack, B);
-
 		B = B->next;
 		len_b--;
 	}
@@ -175,6 +183,7 @@ void	ft_steps_to_a_for_all(t_basik *stack)
 	while(len_b)
 	{
 		B->total += ft_steps_B(B, len);	
+//		printf("Total: %d\n", B->total);
 		B = B->next;
 		len_b--;
 	}
@@ -233,13 +242,84 @@ void	ft_b(t_basik *stack)
 
 	while (len_b)
 	{
-		printf("Comands for %d index is: %d\n", i, B->total);
+//		printf("Comands for %d index is: %d\n", i, B->total);
 		len_b--;
 		B = B->next;
 		i++;
 	}
 	
 
+}
+void	ft_sort_large_utils_second(t_basik *stack)
+{
+	t_stack *A;
+	int		optimal_index;
+	int		len;
+	int		middle;
+
+	len = ft_stack_len(stack, 1);
+	middle = ft_middle(len);
+	optimal_index = 0;
+	A = stack->a;
+	while (A->put_here != 1)
+		A = A->next;
+	optimal_index = A->index;
+	A = stack->a;
+	while (len)
+	{
+		if (optimal_index == 0)
+			return ;
+		if (optimal_index <= middle)
+		{	
+			ft_ra(stack);
+			optimal_index--;
+		}
+		if (optimal_index > middle)
+		{
+			ft_rra(stack);
+			optimal_index--;
+		}
+		len--;
+	}
+	
+
+	
+//	printf("Optimal index in A: %d\n", optimal_index);
+//	printf("Middle is: %d\n", middle);
+	A = stack->a;
+	
+}
+
+void	ft_sort_large_utils(t_basik *stack, int optimal_index) // Перекрутил на 1 значение в кейсе 96 15 21 6 31 90 97 5 10
+{
+//	t_stack *B;
+	int	len;
+	int	middle;
+
+//	B = stack->b;
+	len = ft_stack_len(stack, 2);
+	middle = ft_middle(len);
+	if (optimal_index > middle)
+	{
+		len = len - optimal_index;
+		while (len)
+		{
+			ft_rrb(stack);
+			len--;
+		}
+	}
+	if (optimal_index < middle && optimal_index)
+	{
+		optimal_index = optimal_index + 1;
+//		printf("Opitmal: %d\n", optimal_index);
+		while (optimal_index)
+		{
+			ft_rb(stack);
+			optimal_index--;
+		}
+	}
+	ft_sort_large_utils_second(stack);
+	ft_pa(stack);
 }
 
 void	ft_sort_large(t_basik *stack, int len)
@@ -259,12 +339,14 @@ void	ft_sort_large(t_basik *stack, int len)
 	if ((*A)->val != stack->max)
 		ft_sa(stack);
 	ft_pa(stack);
-
+	ft_pa(stack);
+	ft_pa(stack);
 	if(stack->b)
 	{
 		ft_b(stack);
 		index = ft_optimal_index(stack);
-		printf("Optimal index is %d\n", index);
+		printf("Optimal B index is %d\n", index);
+//		ft_sort_large_utils(stack, index);
 	}
 
 }
