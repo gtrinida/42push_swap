@@ -46,6 +46,31 @@ void ft_up_or_down(t_stack *stack, int optimal_way)
 		stack->direction = 1;
 }
 
+int ft_optimal_index(t_basik *stack)
+{
+	t_stack *B;
+	int	tmp;
+	int	len;
+	int	index;
+
+	B = stack->b;
+	index = B->index;
+	len = ft_stack_len(stack, 2);
+	tmp = B->total;
+	while (len)
+	{
+		if(tmp > B->total)
+		{
+			tmp = B->total;
+			index = B->index;
+		}
+		B = B->next;
+		len--;
+	}
+	B = stack->b;
+	return(index);
+}
+
 int	ft_steps_B(t_stack *B, int len)
 {
 	int		middle;
@@ -58,18 +83,6 @@ int	ft_steps_B(t_stack *B, int len)
 		return(B->index + 1);
 }
 
-// int	ft_steps_b(t_stack *B, int len)
-// {
-// 	int middle;
-
-// 	middle = ft_middle(len);
-// 	len = len + 1;
-// 	if (B->index > middle)
-// 		return(len - B->index);
-// 	else
-// 		return(B->index + 1);
-
-// }
 int ft_steps_to_A_final(t_basik *stack, int index)
 {
 	t_stack *A;
@@ -209,25 +222,31 @@ void	ft_b(t_basik *stack)
 {
 	int middle;
 	int len_b;
+
 	t_stack *B = stack->b;
+	int i = 0;
 	len_b = ft_stack_len(stack, 2);
 	middle = ft_middle(len_b);
 	ft_get_index(stack);
 	ft_up_or_down(stack->b, middle);
 	ft_steps_to_a_for_all(stack);
+
 	while (len_b)
 	{
-		printf("Comdands: %d\n", B->total);
-		B = B->next;
+		printf("Comands for %d index is: %d\n", i, B->total);
 		len_b--;
+		B = B->next;
+		i++;
 	}
 	
+
 }
 
 void	ft_sort_large(t_basik *stack, int len)
 {
 	t_stack **A;
-
+	int index;
+	index = 0;
 	A = &(stack->a);
 	while (len)
 	{
@@ -244,6 +263,8 @@ void	ft_sort_large(t_basik *stack, int len)
 	if(stack->b)
 	{
 		ft_b(stack);
+		index = ft_optimal_index(stack);
+		printf("Optimal index is %d\n", index);
 	}
 
 }
