@@ -290,7 +290,7 @@ void	ft_sort_large_utils_second(t_basik *stack)
 	
 }
 
-void	ft_sort_large_utils(t_basik *stack, int optimal_index) // Перекрутил на 1 значение в кейсе 96 15 21 6 31 90 97 5 10
+void	ft_sort_large_utils(t_basik *stack, int optimal_index) // Отработал нормально
 {
 //	t_stack *B;
 	int	len;
@@ -310,7 +310,7 @@ void	ft_sort_large_utils(t_basik *stack, int optimal_index) // Перекрут�
 	}
 	if (optimal_index < middle && optimal_index)
 	{
-		optimal_index = optimal_index + 1;
+	//	optimal_index = optimal_index + 1;
 //		printf("Opitmal: %d\n", optimal_index);
 		while (optimal_index)
 		{
@@ -318,7 +318,7 @@ void	ft_sort_large_utils(t_basik *stack, int optimal_index) // Перекрут�
 			optimal_index--;
 		}
 	}
-	ft_sort_large_utils_second(stack);
+//	ft_sort_large_utils_second(stack);
 	ft_pa(stack);
 }
 
@@ -346,7 +346,7 @@ void	ft_sort_large(t_basik *stack, int len)
 		ft_b(stack);
 		index = ft_optimal_index(stack);
 		printf("Optimal B index is %d\n", index);
-//		ft_sort_large_utils(stack, index);
+		ft_sort_large_utils(stack, index);
 	}
 
 }
