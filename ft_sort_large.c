@@ -24,31 +24,21 @@ int	ft_steps_utils(int a_index, int b_index, int len_a, int len_b)
 		steps += len_b - b_index + 1;
 	return (steps);
 }
-void	ft_steps(t_basik *stack, t_stack *B, int val, t_actions *info)
+void	ft_steps(t_basik *stack, t_stack *B, int a_index, t_actions *info)
 {
 	int	len_a;
 	int	len_b;
-	t_stack *A;
-	int	steps;
 	int	tmp;
 
-	steps = 2147483647;
-	A = stack->a;
 	len_a = ft_stack_len(stack, 1);
 	len_b = ft_stack_len(stack, 2);
-	while (A->next)
-	{
-		if(A->val == val)
-			break ;
-		A = A->next;
-	}
-	tmp = ft_steps_utils(A->index, B->index, len_a, len_b);
+	tmp = ft_steps_utils(a_index, B->index, len_a, len_b);
 	printf("Total steps: %d\n", tmp);
-	if (tmp < steps)
+	if (tmp < info->steps)
 	{
-		steps = tmp;
-		info->index_a = A->index;
-		info->way_a = ft_up_or_down(A->index, len_a);
+		info->steps = tmp;
+		info->index_a = a_index;
+		info->way_a = ft_up_or_down(a_index, len_a);
 		info->index_b = B->index;
 		info->way_b = ft_up_or_down(B->index, len_b);
 		printf("Best B index is: %d\n", B->index);
@@ -60,7 +50,7 @@ void	ft_optimal_put(t_basik *stack, t_stack *B, t_actions *info) //Вернет 
 	t_stack *A;
 	int		tmp;
 	int		flag;
-
+	int		a_index;
 
 	A = stack->a;
 	tmp = B->val;
@@ -71,17 +61,21 @@ void	ft_optimal_put(t_basik *stack, t_stack *B, t_actions *info) //Вернет 
 		{
 			tmp = A->val;
 			flag = 1;
+			a_index = A->index;
 		}
 		if (B->val < A->val)
 		{
 			if (tmp > A->val)
+			{
 				tmp = A->val;
+				a_index = A->index;
+			}
 		}
 		A = A->next;
 	}
 	A = A->next;
 //	printf("Optimal value: %d\n", tmp);
-	ft_steps(stack, B, tmp, info);
+	ft_steps(stack, B, a_index, info);
 }
 
 void	ft_start_sort(t_basik *stack, t_actions *info)

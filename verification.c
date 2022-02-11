@@ -29,6 +29,7 @@ void	ft_initialization(t_basik *basic, t_actions *info)
 	info->index_b = 0;
 	info->way_a = 0;
 	info->way_b = 0;
+	info->steps = 2147483647;
 	basic->a = NULL;
 	basic->b = NULL;
 	basic->max = -2147483648;

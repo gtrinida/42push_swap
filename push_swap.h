@@ -26,6 +26,7 @@ typedef struct s_actions
 	int	way_b;
 	int	index_a;
 	int	index_b;
+	int	steps;
 }t_actions;
 
 //Функция для тестов
