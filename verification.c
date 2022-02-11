@@ -23,8 +23,12 @@ int	check_double(t_stack *A)
 	return (1);
 }
 
-void	ft_initialization(t_basik *basic)
+void	ft_initialization(t_basik *basic, t_actions *info)
 {
+	info->index_a = 0;
+	info->index_b = 0;
+	info->way_a = 0;
+	info->way_b = 0;
 	basic->a = NULL;
 	basic->b = NULL;
 	basic->max = -2147483648;

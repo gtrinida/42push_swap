@@ -44,7 +44,7 @@ int ft_check_values(t_basik *stack)
 	return (n);
 }
 
-void	ft_analysis(t_basik *stack)
+void	ft_analysis(t_basik *stack, t_actions *info)
 {
 	int len;
 
@@ -64,7 +64,7 @@ void	ft_analysis(t_basik *stack)
 		if (len == 4 || len == 5)
 			ft_sort_four_five(stack);
 		if (len > 5)
-			ft_sort_large(stack, len);
+			ft_sort_large(stack, len, info);
 	}
 	return;
 }

@@ -10,9 +10,6 @@ typedef struct s_stack
 	int		val;
 	void	*next;
 	int		index;
-	int		direction;
-	int		total;
-	int		larger;
 }t_stack;
 
 typedef	struct s_basic
@@ -22,6 +19,15 @@ typedef	struct s_basic
 	int		min;
 	int		max;
 }t_basik;
+
+typedef struct s_actions
+{
+	int	way_a;
+	int	way_b;
+	int	index_a;
+	int	index_b;
+}t_actions;
+
 //Функция для тестов
 void	print(t_stack *A);
 //Это функции либы
@@ -35,7 +41,7 @@ int		ft_atoi(const char *str);
 //Это новые функции
 void	ft_strsfree(char **strs);
 void	free_stack(t_stack **A);
-void	ft_initialization(t_basik *basic);
+void	ft_initialization(t_basik *basic, t_actions *info);
 void	ft_sa(t_basik *stack);
 void	ft_sb(t_basik *stack);
 void	ft_ss(t_basik *stacks);
@@ -55,16 +61,19 @@ t_stack	*create_node(int val);
 void	up_stack(t_stack **stack);
 int 	ft_verification(char **argv, t_basik *stacks);
 int 	ft_verification_second(char **argv, int *i, int j, t_basik *stacks);
-int	ft_verification_third(char **av);
+int		ft_verification_third(char **av);
 int 	check_long(char **av);
 int 	check_zero(const char *str);
 int 	check_int_utils(char **av, int *i, int j);
 int 	check_int(char **av);
-void	ft_analysis(t_basik *stack);
-int ft_check_values(t_basik *stack);
-int	ft_check_len(t_stack *stack);
+void	ft_analysis(t_basik *stack, t_actions *info);
+int		ft_check_values(t_basik *stack);
+int		ft_check_len(t_stack *stack);
 void	ft_sort_three(t_basik *stack);
 void	ft_sort_four_five(t_basik *stack);
-int ft_is_sorted(t_basik *stack);
-void	ft_sort_large(t_basik *stack, int len);
+int		ft_is_sorted(t_basik *stack);
+void	ft_sort_large(t_basik *stack, int len, t_actions *info);
+int		ft_middle(int len);
+int 	ft_stack_len(t_basik *stack, int d);
+void	ft_get_index(t_basik *stack);
 #endif
