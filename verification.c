@@ -34,6 +34,8 @@ void	ft_initialization(t_basik *basic, t_actions *info)
 	basic->b = NULL;
 	basic->max = -2147483648;
 	basic->min = 2147483647;
+	basic->len_a = 0;
+	basic->len_b = 0;
 }
 
 int	ft_verification_third(char **av)

@@ -18,6 +18,8 @@ typedef	struct s_basic
 	t_stack *b;
 	int		min;
 	int		max;
+	int		len_a;
+	int		len_b;
 }t_basik;
 
 typedef struct s_actions
