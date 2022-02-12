@@ -5,6 +5,48 @@ int	ft_up_or_down(int index, int len)
 	return (index <= len / 2);
 }
 
+void	ft_final_sort_utils(t_basik *stack)
+{
+	int	len;
+	int	index;
+	int	direction;
+	t_stack *A;
+
+	A = stack->a;
+	len = ft_check_values(stack);
+	while (A)
+	{
+		if(A->val == stack->max)
+		{
+			index = A->index;
+			break ;
+		}
+		A = A->next;
+	}
+	direction = ft_up_or_down(index, len);
+	if (direction)
+	{
+		while (index)
+		{
+			ft_ra(stack);
+			index--;
+		}
+		ft_ra(stack);
+		ft_ra(stack);
+	}
+	else
+	{
+		len = len - index;
+		len--;
+		while (len)
+		{
+			ft_rra(stack);
+			len--;
+		}
+		
+	}
+}
+
 void	ft_final_sort(t_basik *stack, t_actions *info)
 {
 	int i;
@@ -103,7 +145,7 @@ void	ft_optimal_put(t_basik *stack, t_stack *B, t_actions *info)
 	// print(B);
 	tmp = 2147483647;
 	A = stack->a;
-	printf("B val is:%d\n", B->val);
+//	printf("B val is:%d\n", B->val);
 	while (A)
 	{
 	//	printf("%d > %d && %d < %d\n", tmp, A->val, B->val, A->val);
@@ -137,6 +179,7 @@ void	ft_start_sort(t_basik *stack, t_actions *info)
 		len_b--;
 	}
 	ft_final_sort(stack, info);
+	
 }
 
 void	ft_sort_large(t_basik *stack, int len, t_actions *info)
@@ -160,5 +203,5 @@ void	ft_sort_large(t_basik *stack, int len, t_actions *info)
 		ft_get_index(stack);
 		ft_start_sort(stack, info);
 	}
-
+	ft_final_sort_utils(stack);
 }

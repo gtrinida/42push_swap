@@ -27,7 +27,7 @@ void	ft_pa(t_basik *stacks)
 void	ft_rra(t_basik *stack)
 {
 	down_stack(&(stack->a));
-	write(1, "rra\n", 4);
+//	write(1, "rra\n", 4);
 }
 
 void	ft_rrb(t_basik *stack)
