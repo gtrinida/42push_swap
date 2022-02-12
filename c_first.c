@@ -15,6 +15,7 @@ void	ft_sb(t_basik *stack)
 void	ft_ra(t_basik *stack)
 {
 	up_stack(&(stack->a));
+	write(1, "ra\n", 3);
 }
 
 void	ft_rb(t_basik *stack)
