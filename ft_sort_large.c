@@ -14,6 +14,7 @@ void	ft_final_sort_utils(t_basik *stack)
 
 	A = stack->a;
 	len = ft_check_values(stack);
+	printf("Len is %d\n", len);
 	while (A)
 	{
 		if(A->val == stack->max)
@@ -31,7 +32,6 @@ void	ft_final_sort_utils(t_basik *stack)
 			ft_ra(stack);
 			index--;
 		}
-		ft_ra(stack);
 		ft_ra(stack);
 	}
 	else
@@ -58,9 +58,6 @@ void	ft_final_sort(t_basik *stack, t_actions *info)
 	j = info->index_a;
 	len_a = ft_stack_len(stack, 1);
 	len_b = ft_stack_len(stack, 2);
-//	printf("index b is: %d\n", i);
-//	printf("index a is: %d\n", j);
-//	printf("direction A is: %d\n", info->way_a);
 	if (info->way_b)
 	{
 		while (i)
@@ -120,17 +117,16 @@ void	ft_steps(t_basik *stack, t_stack *B, int a_index, t_actions *info)
 	len_a = ft_stack_len(stack, 1);
 	len_b = ft_stack_len(stack, 2);
 	tmp = ft_steps_utils(a_index, B->index, len_a, len_b);
-//	printf("Total steps: %d\n", tmp);
 	if (tmp < info->steps) // Я убрал info->steps = tmp (понять что это было за условие и почему это пофиксилось)
 	{
 //		printf("A index: %d\nLen is: %d\n", a_index, len_a);
 	//	info->steps = tmp;
 		info->index_a = a_index;
 		info->way_a = ft_up_or_down(a_index, len_a);
-//		printf("A way is: %d\n", info->way_a);
+
 		info->index_b = B->index;
 		info->way_b = ft_up_or_down(B->index, len_b);
-//		printf("Best B index is: %d\n", B->index);
+
 	}
 }
 
@@ -141,14 +137,10 @@ void	ft_optimal_put(t_basik *stack, t_stack *B, t_actions *info)
 	int		a_index;
 
 	A = stack->a;
-	// print(A);
-	// print(B);
 	tmp = 2147483647;
 	A = stack->a;
-//	printf("B val is:%d\n", B->val);
 	while (A)
 	{
-	//	printf("%d > %d && %d < %d\n", tmp, A->val, B->val, A->val);
 		if (tmp >= A->val && B->val < A->val)
 		{
 			tmp = A->val;
@@ -156,8 +148,6 @@ void	ft_optimal_put(t_basik *stack, t_stack *B, t_actions *info)
 		}
 		A = A->next;
 	}
-//	A = A->next;
-//	printf("Optimal value: %d\n", tmp);
 	ft_steps(stack, B, a_index, info);
 }
 
@@ -168,10 +158,6 @@ void	ft_start_sort(t_basik *stack, t_actions *info)
 
 	B = stack->b;
 	len_b = ft_stack_len(stack, 2);
-	// print(stack->a);
-	// print(B);
-	// printf("New cycle\n");
-	// printf("lenght b: %d\n", len_b);
 	while (len_b)
 	{
 		ft_optimal_put(stack, B, info);
@@ -203,5 +189,6 @@ void	ft_sort_large(t_basik *stack, int len, t_actions *info)
 		ft_get_index(stack);
 		ft_start_sort(stack, info);
 	}
-	ft_final_sort_utils(stack);
+//	ft_final_sort_utils(stack);
+	printf("info%d\n\n\n", info->index_a);
 }

@@ -9,6 +9,7 @@ void	ft_pb(t_basik *stacks)
 	tmp = stacks->a;
 	stacks->a = stacks->a->next;
 	add_new_node_reverse(&(stacks->b), tmp->val);
+	write(1, "pb\n", 3);
 	free(tmp);
 }
 
@@ -21,16 +22,18 @@ void	ft_pa(t_basik *stacks)
 	tmp = stacks->b;
 	stacks->b = stacks->b->next;
 	add_new_node_reverse(&(stacks->a), tmp->val);
+	write(1, "pa\n", 3);
 	free(tmp);
 }
 
 void	ft_rra(t_basik *stack)
 {
 	down_stack(&(stack->a));
-//	write(1, "rra\n", 4);
+	write(1, "rra\n", 4);
 }
 
 void	ft_rrb(t_basik *stack)
 {
 	down_stack(&(stack->b));
+	write(1, "rrb\n", 4);
 }
