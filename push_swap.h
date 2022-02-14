@@ -44,7 +44,8 @@ int		ft_atoi(const char *str);
 //Это новые функции
 void	ft_strsfree(char **strs);
 void	free_stack(t_stack **A);
-void	ft_initialization(t_basik *basic, t_actions *info);
+void	ft_initialization(t_basik *basic);
+void	ft_action_initialization(t_actions *info);
 void	ft_sa(t_basik *stack);
 void	ft_sb(t_basik *stack);
 void	ft_ss(t_basik *stacks);
@@ -69,7 +70,7 @@ int 	check_long(char **av);
 int 	check_zero(const char *str);
 int 	check_int_utils(char **av, int *i, int j);
 int 	check_int(char **av);
-void	ft_analysis(t_basik *stack, t_actions *info);
+void	ft_analysis(t_basik *stack);
 int		ft_check_values(t_basik *stack);
 int		ft_check_len(t_stack *stack);
 void	ft_sort_three(t_basik *stack);

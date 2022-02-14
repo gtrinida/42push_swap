@@ -1,5 +1,14 @@
 #include "push_swap.h"
 
+void	ft_action_initialization(t_actions *info)
+{
+	info->index_a = 0;
+	info->index_b = 0;
+	info->way_a = 0;
+	info->way_b = 0;
+	info->steps = 2147483647;
+}
+
 int ft_is_sorted(t_basik *stack)
 {
 	t_stack *A;
@@ -44,9 +53,10 @@ int ft_check_values(t_basik *stack)
 	return (n);
 }
 
-void	ft_analysis(t_basik *stack, t_actions *info)
+void	ft_analysis(t_basik *stack)
 {
 	int len;
+	t_actions *info;
 
 	len = ft_check_values(stack);
 	if (ft_is_sorted(stack) == 1)
@@ -64,7 +74,13 @@ void	ft_analysis(t_basik *stack, t_actions *info)
 		if (len == 4 || len == 5)
 			ft_sort_four_five(stack);
 		if (len > 5)
+		{
+			info = malloc(sizeof(t_actions));
+			if (!info)
+				return;
+			ft_action_initialization(info);
 			ft_sort_large(stack, len, info);
+		}
 	}
 	return;
 }

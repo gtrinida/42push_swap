@@ -193,11 +193,7 @@ void	ft_sort_large(t_basik *stack, int len, t_actions *info)
 	while(stack->b) 
 	{
 		ft_get_index(stack);
-			info->index_a = 0;
-		info->index_b = 0;
-		info->way_a = 0;
-		info->way_b = 0;
-		info->steps = 2147483647;
+		ft_action_initialization(info);
 		ft_start_sort(stack, info);
 	}
 //	ft_final_sort_utils(stack);

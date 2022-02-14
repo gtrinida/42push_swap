@@ -34,20 +34,16 @@ void	print(t_stack *A)
 int main(int argc, char **argv)
 {
 	t_basik *stacks;
-	t_actions *info;
+
 	if (argc < 2)
 		return (0);
 	stacks = malloc(sizeof(t_basik));
 	if (!stacks)
 		return (0);
-	info = malloc(sizeof(t_actions)); // сменить ей место иницилизации только на то место где будет
-	// 5+ символов
-	if (!info)
-		return (0);
-	ft_initialization(stacks, info);
+	ft_initialization(stacks);
 	if(!ft_verification(argv, stacks))
 	{
-		ft_analysis(stacks, info);
+		ft_analysis(stacks);
 		// printf("stacks min: %d\n", stacks->min);
 		// printf("stacks max: %d\n", stacks->max);
 		print(stacks->a);
