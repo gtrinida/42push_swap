@@ -117,16 +117,17 @@ void	ft_steps(t_basik *stack, t_stack *B, int a_index, t_actions *info)
 	len_a = ft_stack_len(stack, 1);
 	len_b = ft_stack_len(stack, 2);
 	tmp = ft_steps_utils(a_index, B->index, len_a, len_b);
-	if (tmp < info->steps) // Я убрал info->steps = tmp (понять что это было за условие и почему это пофиксилось)
+//	printf("Steps: %d\nAnd steps in structure %d\n", tmp, info->steps);
+	if (tmp < info->steps) 
 	{
-//		printf("A index: %d\nLen is: %d\n", a_index, len_a);
-	//	info->steps = tmp;
+	//      printf("A in structure index: %d\n", a_index);
+		info->steps = tmp;
 		info->index_a = a_index;
 		info->way_a = ft_up_or_down(a_index, len_a);
-
 		info->index_b = B->index;
 		info->way_b = ft_up_or_down(B->index, len_b);
-
+//		printf("We will push at this A index %d\n", a_index);
+//		printf("This B index what we will push %d\n", B->index);
 	}
 }
 
@@ -184,9 +185,19 @@ void	ft_sort_large(t_basik *stack, int len, t_actions *info)
 	if ((*A)->val != stack->max)
 		ft_sa(stack);
 	ft_pa(stack);
+	// ft_pa(stack);
+	// ft_pa(stack);
+	// ft_rra(stack);
+	// ft_rra(stack);
+	// ft_pa(stack);
 	while(stack->b) 
 	{
 		ft_get_index(stack);
+			info->index_a = 0;
+		info->index_b = 0;
+		info->way_a = 0;
+		info->way_b = 0;
+		info->steps = 2147483647;
 		ft_start_sort(stack, info);
 	}
 //	ft_final_sort_utils(stack);
