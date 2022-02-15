@@ -71,7 +71,7 @@ int	ft_verification_second(char **argv, int *i, int j, t_basik *stacks)
 	return (0);
 }
 
-int ft_verification(char **argv, t_basik *stacks)
+int	ft_verification(char **argv, t_basik *stacks)
 {
 	int condition;
 	int i;

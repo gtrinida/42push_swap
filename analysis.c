@@ -9,9 +9,9 @@ void	ft_action_initialization(t_actions *info)
 	info->steps = 2147483647;
 }
 
-int ft_is_sorted(t_basik *stack)
+int	ft_is_sorted(t_basik *stack)
 {
-	t_stack *A;
+	t_stack	*A;
 	int		value;
 
 	A = stack->a;
@@ -26,9 +26,9 @@ int ft_is_sorted(t_basik *stack)
 	return (1);
 }
 
-int ft_check_values(t_basik *stack) 
+int ft_check_values(t_basik *stack)
 {
-	t_stack *A;
+	t_stack	*A;
 	int		i;
 	int		n;
 
@@ -55,20 +55,16 @@ int ft_check_values(t_basik *stack)
 
 void	ft_analysis(t_basik *stack)
 {
-	int len;
-	t_actions *info;
+	t_actions	*info;
+	int			len;
 
 	len = ft_check_values(stack);
 	if (ft_is_sorted(stack) == 1)
-	{
-		printf("it's sorted\n");
 		return ;
-	}
 	if (ft_is_sorted(stack) == 0)
 	{
-		printf("Doesn't sorted\n");
 		if (len == 2)
-			ft_sa(stack);
+			ft_sa(stack, 1);
 		if (len == 3)
 			ft_sort_three(stack);
 		if (len == 4 || len == 5)
@@ -77,10 +73,10 @@ void	ft_analysis(t_basik *stack)
 		{
 			info = malloc(sizeof(t_actions));
 			if (!info)
-				return;
+				return ;
 			ft_action_initialization(info);
 			ft_sort_large(stack, len, info);
 		}
 	}
-	return;
+	return ;
 }

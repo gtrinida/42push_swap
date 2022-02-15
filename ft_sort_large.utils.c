@@ -2,17 +2,17 @@
 
 int	ft_middle(int len)
 {
-	int way;
+	int	way;
 
 	way = len / 2;
 	return (way);
 }
 
-int ft_stack_len(t_basik *stack, int d)
+int	ft_stack_len(t_basik *stack, int d)
 {
-	t_stack *A;
-	t_stack *B;
-	int i;
+	t_stack	*A;
+	t_stack	*B;
+	int		i;
 
 	i = 0;
 	A = stack->a;
@@ -42,7 +42,7 @@ void	ft_get_index_utils(t_basik *stack)
 	int 	len;
 	int		i;
 
-	i = 0;	
+	i = 0;
 	B = stack->b;
 	len = ft_stack_len(stack, 2);
 	while (len)
@@ -60,7 +60,7 @@ void	ft_get_index(t_basik *stack)
 	int 	len;
 	int		i;
 
-	i = 0;	
+	i = 0;
 	A = stack->a;
 	len = ft_stack_len(stack, 1);
 	while (len)

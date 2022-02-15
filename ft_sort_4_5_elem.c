@@ -1,9 +1,9 @@
 #include "push_swap.h"
 
-void ft_sort_final(t_basik *stack)
+void	ft_sort_final(t_basik *stack)
 {
-	t_stack *B;
-	int	val;
+	t_stack	*B;
+	int		val;
 
 	B = stack->b;
 	val = B->val;
@@ -12,18 +12,18 @@ void ft_sort_final(t_basik *stack)
 	{
 		ft_pa(stack);
 		ft_pa(stack);
-		ft_ra(stack);
+		ft_ra(stack, 1);
 	}
 	if(B->val < val)
 	{
 		ft_pa(stack);
-		ft_ra(stack);
+		ft_ra(stack, 1);
 		ft_pa(stack);
 	}
 	return ;
 }
 
-void push_min_max(t_basik *stack, t_stack **A, int flag)
+void	push_min_max(t_basik *stack, t_stack **A, int flag)
 {
 	if ((*A)->val == stack->max)
 	{
@@ -31,7 +31,7 @@ void push_min_max(t_basik *stack, t_stack **A, int flag)
 		ft_pb(stack);
 	}	
 	while ((*A)->val != stack->max && !flag)
-		ft_ra(stack);
+		ft_ra(stack, 1);
 	if (!flag)
 		ft_pb(stack);
 
@@ -42,7 +42,7 @@ void push_min_max(t_basik *stack, t_stack **A, int flag)
 		ft_pb(stack);
 	}	
 	while ((*A)->val != stack->min && !flag)
-		ft_ra(stack);
+		ft_ra(stack, 1);
 	if (!flag)
 		ft_pb(stack);
 	return ;
@@ -50,9 +50,9 @@ void push_min_max(t_basik *stack, t_stack **A, int flag)
 
 void	ft_sort_four_five(t_basik *stack)
 {
-	t_stack **A;
-	int flag;
-	int len;
+	t_stack	**A;
+	int		flag;
+	int		len;
 
 	flag = 0;
 	A = &(stack->a);
@@ -63,8 +63,7 @@ void	ft_sort_four_five(t_basik *stack)
 		if (len == 3)
 			ft_sort_three(stack);
 		if (len == 2)
-			ft_sa(stack);
+			ft_sa(stack, 1);
 	}	
 	ft_sort_final(stack);
 }
-

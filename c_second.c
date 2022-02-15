@@ -2,7 +2,7 @@
 
 void	ft_pb(t_basik *stacks)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	if (stacks->a == NULL)
 		return ;
@@ -15,7 +15,7 @@ void	ft_pb(t_basik *stacks)
 
 void	ft_pa(t_basik *stacks)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	if (stacks->b == NULL)
 		return ;
@@ -26,14 +26,16 @@ void	ft_pa(t_basik *stacks)
 	free(tmp);
 }
 
-void	ft_rra(t_basik *stack)
+void	ft_rra(t_basik *stack, int print)
 {
 	down_stack(&(stack->a));
-	write(1, "rra\n", 4);
+	if (print)	
+		write(1, "rra\n", 4);
 }
 
-void	ft_rrb(t_basik *stack)
+void	ft_rrb(t_basik *stack, int print)
 {
 	down_stack(&(stack->b));
-	write(1, "rrb\n", 4);
+	if (print)
+		write(1, "rrb\n", 4);
 }

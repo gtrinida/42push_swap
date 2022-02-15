@@ -5,35 +5,19 @@
 
 void	free_stack(t_stack **A)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
-	while ((*A)->next)
-	{	
+	while((*A)->next)
+	{
 		tmp = *A;
 		A = (*A)->next;
 		free (tmp);
 	}
 }
 
-void	print(t_stack *A)
-{
-	if(!A)
-	{
-		printf("Nothing\n");
-		return ;
-	}
-	while (A->next)
-	{
-		printf("%d ", A->val);
-		A = A->next;
-	}
-	printf("%d \n", A->val);
-}
-
-
 int main(int argc, char **argv)
 {
-	t_basik *stacks;
+	t_basik	*stacks;
 
 	if (argc < 2)
 		return (0);
@@ -44,12 +28,7 @@ int main(int argc, char **argv)
 	if(!ft_verification(argv, stacks))
 	{
 		ft_analysis(stacks);
-		// printf("stacks min: %d\n", stacks->min);
-		// printf("stacks max: %d\n", stacks->max);
-		print(stacks->a);
-		print(stacks->b);
 		free_stack(&stacks->a);
-	}	
-
+	}
 	return (0);
 }
