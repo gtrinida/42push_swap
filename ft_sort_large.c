@@ -12,12 +12,12 @@ void	ft_final_sort_utils(t_basik *stack)
 	int	direction;
 	t_stack *A;
 
+	ft_get_index(stack);
 	A = stack->a;
 	len = ft_check_values(stack);
-	printf("Len is %d\n", len);
 	while (A)
 	{
-		if(A->val == stack->max)
+		if(A->val == stack->min)
 		{
 			index = A->index;
 			break ;
@@ -37,13 +37,11 @@ void	ft_final_sort_utils(t_basik *stack)
 	else
 	{
 		len = len - index;
-		len--;
 		while (len)
 		{
 			ft_rra(stack);
 			len--;
 		}
-		
 	}
 }
 
@@ -117,17 +115,13 @@ void	ft_steps(t_basik *stack, t_stack *B, int a_index, t_actions *info)
 	len_a = ft_stack_len(stack, 1);
 	len_b = ft_stack_len(stack, 2);
 	tmp = ft_steps_utils(a_index, B->index, len_a, len_b);
-//	printf("Steps: %d\nAnd steps in structure %d\n", tmp, info->steps);
 	if (tmp < info->steps) 
 	{
-	//      printf("A in structure index: %d\n", a_index);
 		info->steps = tmp;
 		info->index_a = a_index;
 		info->way_a = ft_up_or_down(a_index, len_a);
 		info->index_b = B->index;
 		info->way_b = ft_up_or_down(B->index, len_b);
-//		printf("We will push at this A index %d\n", a_index);
-//		printf("This B index what we will push %d\n", B->index);
 	}
 }
 
@@ -185,17 +179,13 @@ void	ft_sort_large(t_basik *stack, int len, t_actions *info)
 	if ((*A)->val != stack->max)
 		ft_sa(stack);
 	ft_pa(stack);
-	// ft_pa(stack);
-	// ft_pa(stack);
-	// ft_rra(stack);
-	// ft_rra(stack);
-	// ft_pa(stack);
 	while(stack->b) 
 	{
 		ft_get_index(stack);
 		ft_action_initialization(info);
 		ft_start_sort(stack, info);
 	}
-//	ft_final_sort_utils(stack);
-	printf("info%d\n\n\n", info->index_a);
+//	printf("Before last\n");
+//	print(stack->a);
+	ft_final_sort_utils(stack);
 }
