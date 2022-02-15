@@ -9,13 +9,14 @@ SRCS = push_swap.c\
 	c_second.c\ 
 	c_third.c\
 	c_utils.c\
-	ft_sort_3_elem.c\
-	ft_sort_4_5_elem.c\ 
-	ft_sort_large.c\ 
-	ft_sort_large_second.c\ 
-	ft_sort_large_utils.c\
+	sort_3.c\
+	sort_4_5.c\ 
+	sort_large.c\ 
+	sort_large_second.c\ 
+	sort_large_utils.c\
 	verification.c\
-	verification_utils.c
+	verification_utils.c\
+	atoi_overflow.c
 
 OBJS = $(SRCS:%.c=%.o)
 
