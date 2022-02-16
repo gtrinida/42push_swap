@@ -18,8 +18,6 @@ typedef	struct s_basic
 	t_stack *b;
 	int		min;
 	int		max;
-	int		len_a;
-	int		len_b;
 }t_basik;
 
 typedef struct s_actions
@@ -83,5 +81,5 @@ void	ft_get_index(t_basik *stack);
 void	ft_push_to_a(t_basik *stack, t_actions *info);
 int		ft_up_or_down(int index, int len);
 void	ft_sort_a(t_basik *stack);
-
+void free_stacks(t_basik *stacks);
 #endif

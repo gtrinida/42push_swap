@@ -13,6 +13,33 @@ void	free_stack(t_stack **A)
 		A = (*A)->next;
 		free (tmp);
 	}
+	//tmp = 0;
+}
+
+void free_stacks(t_basik *stacks)
+{
+	t_stack	*tmp;
+	int		i;
+	int		len_a;
+	int		len_b;
+	len_a = ft_stack_len(stacks, 1);
+	len_b = ft_stack_len(stacks, 2);
+	i = 0;
+	while(i < len_a)
+	{
+		tmp = stacks->a;
+		stacks->a = stacks->a->next;
+		free(tmp);
+		i++;
+	}
+	i = 0;
+	while(i < len_b)
+	{
+		tmp = stacks->b;
+		stacks->b = stacks->b->next;
+		free(tmp);
+		i++;
+	}
 }
 
 int main(int argc, char **argv)
@@ -28,7 +55,8 @@ int main(int argc, char **argv)
 	if(!ft_verification(argv, stacks))
 	{
 		ft_analysis(stacks);
-		free_stack(&stacks->a);
+		free_stacks(stacks);
 	}
+	free(stacks);
 	return (0);
 }

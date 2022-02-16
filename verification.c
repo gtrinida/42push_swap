@@ -29,8 +29,6 @@ void	ft_initialization(t_basik *basic)
 	basic->b = NULL;
 	basic->max = -2147483648;
 	basic->min = 2147483647;
-	basic->len_a = 0;
-	basic->len_b = 0;
 }
 
 int	ft_verification_third(char **av)
@@ -54,6 +52,7 @@ int	ft_verification_second(char **argv, int *i, int j, t_basik *stacks)
 		if (condition == -1)
 		{
 			write(1, "Error\n", 6);
+			free_stacks(stacks);
 			ft_strsfree(split);
 			return(-1);
 		}
@@ -65,7 +64,7 @@ int	ft_verification_second(char **argv, int *i, int j, t_basik *stacks)
 		if(condition == -1)
 		{
 			write(1, "Error\n", 6);
-			free_stack(&stacks->a);
+			free_stacks(stacks);
 			return (-1);
 		}
 	return (0);

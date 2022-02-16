@@ -14,7 +14,8 @@ void	ft_sort_final(t_basik *stack)
 		ft_pa(stack);
 		ft_ra(stack, 1);
 	}
-	if(B->val < val)
+	//if(B->val < val) меняю для чека ликов
+	else
 	{
 		ft_pa(stack);
 		ft_ra(stack, 1);

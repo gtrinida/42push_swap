@@ -76,6 +76,7 @@ void	ft_analysis(t_basik *stack)
 				return ;
 			ft_action_initialization(info);
 			ft_sort_large(stack, len, info);
+			free(info);
 		}
 	}
 	return ;

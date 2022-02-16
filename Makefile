@@ -1,8 +1,9 @@
-NAME = push_swap.a
 CC = gcc
+INC = .
 INCLUDES = push_swap.h
 CFLAGS = -Wall -Wextra -Werror
 
+NAME = push_swap
 SRCS = push_swap.c\
 	analysis.c\
 	c_first.c\
@@ -21,16 +22,16 @@ SRCS = push_swap.c\
 OBJS = $(SRCS:%.c=%.o)
 
 %.o: %.c $(INCLUDES)
-	$(CC) $(CFLAGS) -c $< -libft
+	$(CC) $(CFLAGS) -c $< -llibft
 
 $(NAME): $(OBJS)
 	@make -C libft
-	$(CC) -o $(NAME) $(OBJS) $(CFLAGS) libft/libft.a
+	$(CC) -o $(NAME) $(OBJS) $(CFLAGS) -I$(INC) libft/libft.a
 
 all: $(NAME)
 
 clean:
-	@make -C libft fclean
+	@make -C libft clean
 	$(RM) $(OBJS)
 
 fclean: clean
