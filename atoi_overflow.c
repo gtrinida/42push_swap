@@ -1,55 +1,47 @@
-int	ft_isdigit(int character)
-{
-	return (character >= '0' && character <= '9');
-}
+#include "push_swap.h"
 
-static int	ft_issign(int c)
-{
-	return ((char)c == '-' || (char)c == '+');
-}
-
-static int	ft_iswhitespace(int c)
+int	ft_space(int c)
 {
 	return ((char)c == '\t' || (char)c == '\v' || (char)c == '\f'
 		|| (char)c == '\r' || (char)c == '\n' || (char)c == ' ');
 }
 
-static	int	ft_checkoverflow(int res, int term, int sign)
+int	ft_overflow(int result, int term, int sign)
 {
-	long long int	result;
+	long long int	res;
 
-	result = res;
-	result = (result * 10) + term;
-	result = result * sign;
-	if (result > +2147483647)
-		return (-1);
-	else if (result < -2147483648)
-		return (0);
-	return (1);
+	res = result;
+	res = (res * 10) + term;
+	res = res * sign;
+	if (res > +2147483647)
+		return (1);
+	else if (res < -2147483648)
+		return (1);
+	return (0);
 }
 
 int	ft_atoi_overflow(const char *str, int *overflow)
 {
 	int	i;
-	int	res;
+	int	result;
 	int	sign;
 
 	i = 0;
-	res = 0;
+	result = 0;
 	sign = 1;
-	while (str[i] != '\0' && ft_iswhitespace(str[i]))
+	while (str[i] != '\0' && ft_space(str[i]))
 		i++;
-	if (str[i] != '\0' && ft_issign(str[i]))
+	if (str[i] != '\0' && (str[i] == '-' || str[i] == '+'))
 	{
 		if (str[i++] == '-')
-			sign *= -1;
+			sign = -1;
 	}
-	while (str[i] != '\0' && ft_isdigit(str[i]))
+	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
 	{
-		if (ft_checkoverflow(res, (str[i] - '0'), sign) != 1)
+		if (ft_overflow(result, (str[i] - '0'), sign))
 			return(*overflow = *overflow - 2);
-		res = res * 10 + (str[i] - '0');
+		result = result * 10 + (str[i] - '0');
 		i++;
 	}
-	return (res * sign);
+	return (result * sign);
 }

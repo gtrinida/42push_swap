@@ -75,7 +75,6 @@ int	ft_verification(char **argv, t_basik *stacks)
 	int condition;
 	int i;
 	int j;
-	
 
 	j = 0;
 	i = 1;

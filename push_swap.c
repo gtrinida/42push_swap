@@ -13,7 +13,6 @@ void	free_stack(t_stack **A)
 		A = (*A)->next;
 		free (tmp);
 	}
-	//tmp = 0;
 }
 
 void free_stacks(t_basik *stacks)

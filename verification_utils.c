@@ -31,7 +31,7 @@ int check_long(char **av)
 	return(1);
 }
 
- // подучить и написать подобное 
+// подучить и написать подобное 
 int check_zero(const char *str)
 {
 	size_t i;
