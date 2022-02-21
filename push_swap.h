@@ -39,6 +39,7 @@ size_t	ft_strlen(const char *str);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_atoi_overflow(const char *str, int *overflow);
 int		ft_atoi(const char *str);
+void	*ft_memset(void *b, int c, size_t len);
 //Это новые функции
 void	ft_strsfree(char **strs);
 void	free_stack(t_stack **A);
