@@ -3,7 +3,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
-//#include "C:\Users\ilya9\OneDrive\Desktop\Coding\Actual\push_swap\libft\libft.h"
+# include "libft.h"
 
 typedef struct s_stack
 {
@@ -29,18 +29,6 @@ typedef struct s_actions
 	int	steps;
 }t_actions;
 
-//Функция для тестов
-void	print(t_stack *A);
-//Это функции либы
-char	**ft_split(const char *s, char c);
-char	*ft_strrchr(const char *string, int c);
-void	*ft_calloc(size_t sym, size_t onesymsize);
-size_t	ft_strlen(const char *str);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-int		ft_atoi_overflow(const char *str, int *overflow);
-int		ft_atoi(const char *str);
-void	*ft_memset(void *b, int c, size_t len);
-//Это новые функции
 void	ft_strsfree(char **strs);
 void	free_stack(t_stack **A);
 void	ft_initialization(t_basik *basic);
@@ -83,4 +71,5 @@ void	ft_push_to_a(t_basik *stack, t_actions *info);
 int		ft_up_or_down(int index, int len);
 void	ft_sort_a(t_basik *stack);
 void free_stacks(t_basik *stacks);
+int	ft_atoi_overflow(const char *str, int *overflow);
 #endif

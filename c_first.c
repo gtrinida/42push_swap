@@ -1,4 +1,5 @@
 #include "push_swap.h"
+#include "libft.h"
 #include <stdio.h>
 
 void	ft_sa(t_basik *stack, int print)

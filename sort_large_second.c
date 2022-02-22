@@ -1,4 +1,5 @@
 #include "push_swap.h"
+#include "libft.h"
 
 int	ft_up_or_down(int index, int len)
 {

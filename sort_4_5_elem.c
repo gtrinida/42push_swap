@@ -1,4 +1,5 @@
 #include "push_swap.h"
+#include "libft.h"
 
 void	ft_sort_final(t_basik *stack)
 {

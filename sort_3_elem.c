@@ -1,4 +1,5 @@
 #include "push_swap.h"
+#include "libft.h"
 
 void	ft_check_min_max(t_basik *stack)
 {

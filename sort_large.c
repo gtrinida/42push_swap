@@ -1,4 +1,5 @@
 #include "push_swap.h"
+#include "libft.h"
 
 int	ft_steps_utils(int a_index, int b_index, int len_a, int len_b)
 {

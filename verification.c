@@ -1,4 +1,5 @@
 #include "push_swap.h"
+#include "libft.h"
 #include <stdio.h>
 
 int	check_double(t_stack *A)

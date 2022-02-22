@@ -4,25 +4,25 @@ INCLUDES = push_swap.h
 CFLAGS = -Wall -Wextra -Werror
 
 NAME = push_swap
-SRCS = push_swap.c\
-	analysis.c\
-	c_first.c\
-	c_second.c\ 
-	c_third.c\
-	c_utils.c\
-	sort_3.c\
-	sort_4_5.c\ 
-	sort_large.c\ 
-	sort_large_second.c\ 
-	sort_large_utils.c\
-	verification.c\
-	verification_utils.c\
-	atoi_overflow.c
+SRCS = push_swap.c \
+	analysis.c \
+	c_first.c \
+	c_second.c \
+	c_third.c \
+	c_utils.c \
+	sort_3_elem.c \
+	sort_4_5_elem.c \
+	sort_large.c \
+	sort_large_second.c \
+	sort_large_utils.c \
+	verification.c \
+	verification_utils.c \
+	atoi_overflow.c 
 
 OBJS = $(SRCS:%.c=%.o)
 
 %.o: %.c $(INCLUDES)
-	$(CC) $(CFLAGS) -c $< -llibft
+	$(CC) $(CFLAGS) -c $< -Ilibft
 
 $(NAME): $(OBJS)
 	@make -C libft
@@ -39,3 +39,7 @@ fclean: clean
 	$(RM) $(NAME)
 
 re: clean all
+
+norme:
+	norminette libft/*.c libft/*.h
+	norminette $(SRCS) $(INCLUDES)
