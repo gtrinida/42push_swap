@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_large.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gtrinida <gtrinida@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/03 15:24:34 by gtrinida          #+#    #+#             */
+/*   Updated: 2022/03/03 15:24:34 by gtrinida         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-#include "libft.h"
 
 int	ft_steps_utils(int a_index, int b_index, int len_a, int len_b)
 {
@@ -15,7 +26,8 @@ int	ft_steps_utils(int a_index, int b_index, int len_a, int len_b)
 		steps += len_b - b_index + 1;
 	return (steps);
 }
-void	ft_steps(t_basik *stack, t_stack *B, int a_index, t_actions *info)
+
+void	ft_steps(t_basik *stack, t_stack *b, int a_index, t_actions *info)
 {
 	int	len_a;
 	int	len_b;
@@ -23,49 +35,49 @@ void	ft_steps(t_basik *stack, t_stack *B, int a_index, t_actions *info)
 
 	len_a = ft_stack_len(stack, 1);
 	len_b = ft_stack_len(stack, 2);
-	tmp = ft_steps_utils(a_index, B->index, len_a, len_b);
-	if (tmp < info->steps) 
+	tmp = ft_steps_utils(a_index, b->index, len_a, len_b);
+	if (tmp < info->steps)
 	{
 		info->steps = tmp;
 		info->index_a = a_index;
 		info->way_a = ft_up_or_down(a_index, len_a);
-		info->index_b = B->index;
-		info->way_b = ft_up_or_down(B->index, len_b);
+		info->index_b = b->index;
+		info->way_b = ft_up_or_down(b->index, len_b);
 	}
 }
 
-void	ft_optimal_put(t_basik *stack, t_stack *B, t_actions *info)
+void	ft_optimal_put(t_basik *stack, t_stack *b, t_actions *info)
 {
-	t_stack	*A;
+	t_stack	*a;
 	int		tmp;
 	int		a_index;
 
-	A = stack->a;
+	a = stack->a;
 	tmp = 2147483647;
-	A = stack->a;
-	while (A)
+	a = stack->a;
+	while (a)
 	{
-		if (tmp >= A->val && B->val < A->val)
+		if (tmp >= a->val && b->val < a->val)
 		{
-			tmp = A->val;
-			a_index = A->index;
+			tmp = a->val;
+			a_index = a->index;
 		}
-		A = A->next;
+		a = a->next;
 	}
-	ft_steps(stack, B, a_index, info);
+	ft_steps(stack, b, a_index, info);
 }
 
 void	ft_start_sort(t_basik *stack, t_actions *info)
 {
-	t_stack	*B;
+	t_stack	*b;
 	int		len_b;
 
-	B = stack->b;
+	b = stack->b;
 	len_b = ft_stack_len(stack, 2);
 	while (len_b)
 	{
-		ft_optimal_put(stack, B, info);
-		B = B->next;
+		ft_optimal_put(stack, b, info);
+		b = b->next;
 		len_b--;
 	}
 	ft_push_to_a(stack, info);
@@ -73,21 +85,21 @@ void	ft_start_sort(t_basik *stack, t_actions *info)
 
 void	ft_sort_large(t_basik *stack, int len, t_actions *info)
 {
-	t_stack	**A;
+	t_stack	**a;
 
-	A = &(stack->a);
+	a = &(stack->a);
 	while (len)
 	{
-		if ((*A)->val != stack->max && (*A)->val != stack->min)
+		if ((*a)->val != stack->max && (*a)->val != stack->min)
 			ft_pb(stack);
 		else
 			ft_ra(stack, 1);
 		len--;
 	}
-	if ((*A)->val != stack->max)
+	if ((*a)->val != stack->max)
 		ft_sa(stack, 1);
 	ft_pa(stack);
-	while(stack->b) 
+	while (stack->b)
 	{
 		ft_get_index(stack);
 		ft_action_initialization(info);

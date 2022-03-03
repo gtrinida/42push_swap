@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   atoi_overflow.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gtrinida <gtrinida@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/03 14:09:17 by gtrinida          #+#    #+#             */
+/*   Updated: 2022/03/03 14:09:17 by gtrinida         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-#include "libft.h"
 
 int	ft_space(int c)
 {
@@ -40,7 +51,7 @@ int	ft_atoi_overflow(const char *str, int *overflow)
 	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
 	{
 		if (ft_overflow(result, (str[i] - '0'), sign))
-			return(*overflow = *overflow - 2);
+			return (*overflow = *overflow - 2);
 		result = result * 10 + (str[i] - '0');
 		i++;
 	}

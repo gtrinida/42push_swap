@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_large_second.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gtrinida <gtrinida@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/03 14:25:32 by gtrinida          #+#    #+#             */
+/*   Updated: 2022/03/03 14:25:32 by gtrinida         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-#include "libft.h"
 
 int	ft_up_or_down(int index, int len)
 {
@@ -34,22 +45,24 @@ void	ft_sort_a(t_basik *stack)
 {
 	int		len;
 	int		index;
-	t_stack	*A;
+	t_stack	*a;
 
+	index = 0;
 	ft_get_index(stack);
-	A = stack->a;
+	a = stack->a;
 	len = ft_check_values(stack);
-	while (A)
+	while (a)
 	{
-		if(A->val == stack->min)
+		if (a->val == stack->min)
 		{
-			index = A->index;
+			index = a->index;
 			break ;
 		}
-		A = A->next;
+		a = a->next;
 	}
 	ft_sort_a_utils(index, stack, len);
 }
+
 void	ft_push_to_a_utils(t_basik *stack, t_actions *info)
 {
 	int	len_a;

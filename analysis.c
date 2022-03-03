@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   analysis.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gtrinida <gtrinida@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/26 14:20:13 by gtrinida          #+#    #+#             */
+/*   Updated: 2022/02/26 14:20:13 by gtrinida         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-#include "libft.h"
 
 void	ft_action_initialization(t_actions *info)
 {
@@ -12,43 +23,43 @@ void	ft_action_initialization(t_actions *info)
 
 int	ft_is_sorted(t_basik *stack)
 {
-	t_stack	*A;
+	t_stack	*a;
 	int		value;
 
-	A = stack->a;
-	while (A->next)
+	a = stack->a;
+	while (a->next)
 	{
-		value = A->val;
-		A = A->next;
-		if (value > A->val)
+		value = a->val;
+		a = a->next;
+		if (value > a->val)
 			return (0);
 	}
-	A = stack->a;
+	a = stack->a;
 	return (1);
 }
 
-int ft_check_values(t_basik *stack)
+int	ft_check_values(t_basik *stack)
 {
-	t_stack	*A;
+	t_stack	*a;
 	int		i;
 	int		n;
 
 	i = 1;
-	A = stack->a;
-	while (A->next)
+	a = stack->a;
+	while (a->next)
 	{
 		i++;
-		A = A->next;
+		a = a->next;
 	}
-	A = stack->a;
+	a = stack->a;
 	n = i;
 	while (i)
 	{
-		if(A->val > stack->max)
-			stack->max = A->val;
-		if(A->val < stack->min)
-			stack->min = A->val;
-		A = A->next;
+		if (a->val > stack->max)
+			stack->max = a->val;
+		if (a->val < stack->min)
+			stack->min = a->val;
+		a = a->next;
 		i--;
 	}
 	return (n);

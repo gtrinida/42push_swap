@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_large_utils.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gtrinida <gtrinida@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/03 15:22:50 by gtrinida          #+#    #+#             */
+/*   Updated: 2022/03/03 15:22:50 by gtrinida         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-#include "libft.h"
 
 int	ft_middle(int len)
 {
@@ -11,26 +22,26 @@ int	ft_middle(int len)
 
 int	ft_stack_len(t_basik *stack, int d)
 {
-	t_stack	*A;
-	t_stack	*B;
+	t_stack	*a;
+	t_stack	*b;
 	int		i;
 
 	i = 0;
-	A = stack->a;
-	B = stack->b;
+	a = stack->a;
+	b = stack->b;
 	if (d == 1)
 	{
-		while (A)
+		while (a)
 		{
-			A = A->next;
+			a = a->next;
 			i++;
 		}
 	}
 	if (d == 2)
 	{
-		while (B)
+		while (b)
 		{
-			B = B->next;
+			b = b->next;
 			i++;
 		}
 	}
@@ -39,38 +50,38 @@ int	ft_stack_len(t_basik *stack, int d)
 
 void	ft_get_index_utils(t_basik *stack)
 {
-	t_stack *B;
-	int 	len;
+	t_stack	*b;
+	int		len;
 	int		i;
 
 	i = 0;
-	B = stack->b;
+	b = stack->b;
 	len = ft_stack_len(stack, 2);
 	while (len)
 	{
-		B->index = i;
+		b->index = i;
 		i++;
 		len--;
-		B = B->next;
+		b = b->next;
 	}
 }
 
 void	ft_get_index(t_basik *stack)
 {
-	t_stack *A;
-	int 	len;
+	t_stack	*a;
+	int		len;
 	int		i;
 
 	i = 0;
-	A = stack->a;
+	a = stack->a;
 	len = ft_stack_len(stack, 1);
 	while (len)
 	{
-		A->index = i;
+		a->index = i;
 		i++;
 		len--;
-		A = A->next;
+		a = a->next;
 	}
-	A = stack->a;
+	a = stack->a;
 	ft_get_index_utils(stack);
 }

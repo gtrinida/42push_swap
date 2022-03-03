@@ -1,21 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_4_5_elem.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gtrinida <gtrinida@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/03 14:25:02 by gtrinida          #+#    #+#             */
+/*   Updated: 2022/03/03 14:25:02 by gtrinida         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-#include "libft.h"
 
 void	ft_sort_final(t_basik *stack)
 {
-	t_stack	*B;
+	t_stack	*b;
 	int		val;
 
-	B = stack->b;
-	val = B->val;
-	B = B->next;
-	if (B->val > val)
+	b = stack->b;
+	val = b->val;
+	b = b->next;
+	if (b->val > val)
 	{
 		ft_pa(stack);
 		ft_pa(stack);
 		ft_ra(stack, 1);
 	}
-	//if(B->val < val) меняю для чека ликов
 	else
 	{
 		ft_pa(stack);
@@ -25,25 +35,24 @@ void	ft_sort_final(t_basik *stack)
 	return ;
 }
 
-void	push_min_max(t_basik *stack, t_stack **A, int flag)
+void	push_min_max(t_basik *stack, t_stack **a, int flag)
 {
-	if ((*A)->val == stack->max)
+	if ((*a)->val == stack->max)
 	{
 		flag = 1;
 		ft_pb(stack);
 	}	
-	while ((*A)->val != stack->max && !flag)
+	while ((*a)->val != stack->max && !flag)
 		ft_ra(stack, 1);
 	if (!flag)
 		ft_pb(stack);
-
 	flag = 0;
-	if ((*A)->val == stack->min)
+	if ((*a)->val == stack->min)
 	{
 		flag = 1;
 		ft_pb(stack);
 	}	
-	while ((*A)->val != stack->min && !flag)
+	while ((*a)->val != stack->min && !flag)
 		ft_ra(stack, 1);
 	if (!flag)
 		ft_pb(stack);
@@ -52,13 +61,13 @@ void	push_min_max(t_basik *stack, t_stack **A, int flag)
 
 void	ft_sort_four_five(t_basik *stack)
 {
-	t_stack	**A;
+	t_stack	**a;
 	int		flag;
 	int		len;
 
 	flag = 0;
-	A = &(stack->a);
-	push_min_max(stack, A, flag);
+	a = &(stack->a);
+	push_min_max(stack, a, flag);
 	if (!ft_is_sorted(stack))
 	{
 		len = ft_check_values(stack);

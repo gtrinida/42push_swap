@@ -1,5 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gtrinida <gtrinida@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/03 14:18:05 by gtrinida          #+#    #+#             */
+/*   Updated: 2022/03/03 14:18:05 by gtrinida         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -12,10 +25,10 @@ typedef struct s_stack
 	int		index;
 }t_stack;
 
-typedef	struct s_basic
+typedef struct s_basic
 {
-	t_stack *a;
-	t_stack *b;
+	t_stack	*a;
+	t_stack	*b;
 	int		min;
 	int		max;
 }t_basik;
@@ -50,13 +63,13 @@ void	down_stack(t_stack **stack);
 void	swap_hg(t_stack **stack);
 t_stack	*create_node(int val);
 void	up_stack(t_stack **stack);
-int 	ft_verification(char **argv, t_basik *stacks);
-int 	ft_verification_second(char **argv, int *i, int j, t_basik *stacks);
+int		ft_verification(char **argv, t_basik *stacks);
+int		ft_verification_second(char **argv, int *i, int j, t_basik *stacks);
 int		ft_verification_third(char **av);
-int 	check_long(char **av);
-int 	check_zero(const char *str);
-int 	check_int_utils(char **av, int *i, int j);
-int 	check_int(char **av);
+int		check_long(char **av);
+int		check_zero(const char *str);
+int		check_int_utils(char **av, int *i, int j);
+int		check_int(char **av);
 void	ft_analysis(t_basik *stack);
 int		ft_check_values(t_basik *stack);
 int		ft_check_len(t_stack *stack);
@@ -65,11 +78,12 @@ void	ft_sort_four_five(t_basik *stack);
 int		ft_is_sorted(t_basik *stack);
 void	ft_sort_large(t_basik *stack, int len, t_actions *info);
 int		ft_middle(int len);
-int 	ft_stack_len(t_basik *stack, int d);
+int		ft_stack_len(t_basik *stack, int d);
 void	ft_get_index(t_basik *stack);
 void	ft_push_to_a(t_basik *stack, t_actions *info);
 int		ft_up_or_down(int index, int len);
 void	ft_sort_a(t_basik *stack);
-void free_stacks(t_basik *stacks);
-int	ft_atoi_overflow(const char *str, int *overflow);
+void	free_stacks(t_basik *stacks);
+int		ft_atoi_overflow(const char *str, int *overflow);
+
 #endif

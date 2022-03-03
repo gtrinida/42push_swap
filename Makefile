@@ -1,7 +1,7 @@
 CC = gcc
 INC = .
 INCLUDES = push_swap.h
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -g -Wall -Wextra -Werror
 
 NAME = push_swap
 SRCS = push_swap.c \

@@ -1,6 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   c_first.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gtrinida <gtrinida@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/03 14:09:54 by gtrinida          #+#    #+#             */
+/*   Updated: 2022/03/03 14:09:54 by gtrinida         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-#include "libft.h"
-#include <stdio.h>
+
+void	swap_hg(t_stack **stack)
+{
+	t_stack	*tmp;
+
+	if (*stack == NULL || (*stack)->next == NULL)
+		return ;
+	tmp = *stack;
+	if (tmp->next)
+	{
+		(*stack) = (*stack)->next;
+		tmp->next = (*stack)->next;
+		(*stack)->next = tmp;
+	}
+}
 
 void	ft_sa(t_basik *stack, int print)
 {

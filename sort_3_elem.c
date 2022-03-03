@@ -1,47 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_3_elem.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gtrinida <gtrinida@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/03 14:22:20 by gtrinida          #+#    #+#             */
+/*   Updated: 2022/03/03 14:22:20 by gtrinida         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-#include "libft.h"
 
 void	ft_check_min_max(t_basik *stack)
 {
-	t_stack	*A;
+	t_stack	*a;
 	int		i;
 
 	i = 1;
-	A = stack->a;
+	a = stack->a;
 	stack->max = -2147483648;
 	stack->min = 2147483647;
-	while (A->next)
+	while (a->next)
 	{
 		i++;
-		A = A->next;
+		a = a->next;
 	}
-	A = stack->a;
+	a = stack->a;
 	while (i)
 	{
-		if(A->val > stack->max)
-			stack->max = A->val;
-		if(A->val < stack->min)
-			stack->min = A->val;
-		A = A->next;
+		if (a->val > stack->max)
+			stack->max = a->val;
+		if (a->val < stack->min)
+			stack->min = a->val;
+		a = a->next;
 		i--;
 	}
 	return ;
 }
 
-void	ft_sort_utils(t_basik *stack, int i, t_stack *A)
+void	ft_sort_utils(t_basik *stack, int i, t_stack *a)
 {
 	if (i != stack->min && i != stack->max)
 	{
-		A = A->next;
-		if (A->val == stack->max)
+		a = a->next;
+		if (a->val == stack->max)
 			ft_rra(stack, 1);
 		else
 			ft_sa(stack, 1);
 	}
 	if (stack->a->val == stack->max)
 	{
-		A = A->next;
-		if (A->val == stack->min)
+		a = a->next;
+		if (a->val == stack->min)
 			ft_ra(stack, 1);
 		else
 		{
@@ -53,13 +64,13 @@ void	ft_sort_utils(t_basik *stack, int i, t_stack *A)
 
 void	ft_sort_three(t_basik *stack)
 {
-	t_stack	*A;
+	t_stack	*a;
 	int		i;
 
-	A = stack->a;
-	i = A->val;
+	a = stack->a;
+	i = a->val;
 	ft_check_min_max(stack);
-	ft_sort_utils(stack, i, A);
+	ft_sort_utils(stack, i, a);
 	if (i == stack->min)
 	{
 		ft_rra(stack, 1);

@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   c_second.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gtrinida <gtrinida@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/03 14:10:26 by gtrinida          #+#    #+#             */
+/*   Updated: 2022/03/03 14:10:26 by gtrinida         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-#include "libft.h"
 
 void	ft_pb(t_basik *stacks)
 {
@@ -30,7 +41,7 @@ void	ft_pa(t_basik *stacks)
 void	ft_rra(t_basik *stack, int print)
 {
 	down_stack(&(stack->a));
-	if (print)	
+	if (print)
 		write(1, "rra\n", 4);
 }
 

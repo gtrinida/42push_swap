@@ -1,20 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   c_utils.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gtrinida <gtrinida@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/03 14:11:55 by gtrinida          #+#    #+#             */
+/*   Updated: 2022/03/03 14:11:55 by gtrinida         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-#include "libft.h"
-
-void	swap_hg(t_stack **stack)
-{
-	t_stack	*tmp;
-
-	if (*stack == NULL || (*stack)->next == NULL)
-		return ;
-	tmp = *stack;
-	if (tmp->next)
-	{
-		(*stack) = (*stack)->next;
-		tmp->next = (*stack)->next;
-		(*stack)->next = tmp;
-	}
-}
 
 void	up_stack(t_stack **stack)
 {
@@ -35,7 +31,7 @@ t_stack	*create_node(int val)
 	node = malloc(sizeof(t_stack));
 	node->next = NULL;
 	node->val = val;
-	return(node);
+	return (node);
 }
 
 void	down_stack(t_stack **stack)
