@@ -6,8 +6,6 @@ int	ft_is_it_sorted(t_basik *stacks)
 	int		value;
 
 	a = stacks->a;
-	if(!stacks->a)
-		return(2);
 	while (a->next)
 	{
 		value = a->val;
