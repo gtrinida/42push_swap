@@ -17,7 +17,8 @@ SRCS = push_swap.c \
 	sort_large_utils.c \
 	verification.c \
 	verification_utils.c \
-	atoi_overflow.c 
+	atoi_overflow.c \
+	verification_second.c 
 
 OBJS = $(SRCS:%.c=%.o)
 
@@ -42,4 +43,3 @@ re: clean all
 
 norme:
 	norminette libft/*.c libft/*.h
-	norminette $(SRCS) $(INCLUDES)

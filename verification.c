@@ -42,45 +42,6 @@ void	ft_initialization(t_basik *basic)
 	basic->min = 2147483647;
 }
 
-int	ft_verification_third(char **av)
-{	
-	if (check_int(av) == -1)
-		return (-1);
-	if (check_long(av) == -1)
-		return (-1);
-	return (1);
-}
-
-int	ft_verification_second(char **argv, int *i, int j, t_basik *stacks)
-{
-	int		condition;
-	char	**split;
-
-	split = ft_split(argv[*i], ' ');
-	while (split[j])
-	{
-		condition = ft_verification_third(split);
-		if (condition == -1)
-		{
-			write(1, "Error\n", 6);
-			free_stacks(stacks);
-			ft_strsfree(split);
-			return (-1);
-		}
-		add_new_node(&(stacks->a), ft_atoi(split[j]));
-		j++;
-	}
-	ft_strsfree(split);
-	condition = check_double(stacks->a);
-	if (condition == -1)
-	{
-		write(1, "Error\n", 6);
-		free_stacks(stacks);
-		return (-1);
-	}
-	return (0);
-}
-
 int	ft_verification(char **argv, t_basik *stacks)
 {
 	int	condition;
