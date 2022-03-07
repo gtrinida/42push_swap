@@ -6,6 +6,8 @@ int	ft_is_it_sorted(t_basik *stacks)
 	int		value;
 
 	a = stacks->a;
+	if(!stacks->a)
+		return(2);
 	while (a->next)
 	{
 		value = a->val;
@@ -69,11 +71,14 @@ int	main(int argc, char **argv)
 	ft_initialization(stacks);
 	if (!ft_verification(argv, stacks))
 	{
-		ft_analysis(stacks);
-		if (!ft_is_it_sorted(stacks))
-			write(1, "KO\n", 3);
-		else
-			write(1, "OK\n", 3);
+		if(!ft_is_sorted(stacks))
+		{
+			ft_analysis(stacks);
+			if (!ft_is_it_sorted(stacks))
+				write(1, "KO\n", 3);
+			else if (ft_is_it_sorted(stacks) == 1)
+				write(1, "OK\n", 3);
+		}
 		free_stacks(stacks);
 	}
 	free(stacks);
