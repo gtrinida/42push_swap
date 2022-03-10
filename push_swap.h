@@ -67,7 +67,6 @@ int		ft_verification(char **argv, t_basik *stacks);
 int		ft_verification_second(char **argv, int *i, int j, t_basik *stacks);
 int		ft_verification_third(char **av);
 int		check_long(char **av);
-int		check_zero(const char *str);
 int		check_double(t_stack *A);
 int		check_int_utils(char **av, int *i, int j);
 int		check_int(char **av);
