@@ -63,6 +63,11 @@ int	main(int argc, char **argv)
 	ft_initialization(stacks);
 	if (!ft_verification(argv, stacks))
 	{
+		if (ft_stack_len(stacks, 1) < argc - 1)
+		{
+			write(1, "Error\n", 6);
+			return (-1);
+		}
 		ft_analysis(stacks);
 		free_stacks(stacks);
 	}

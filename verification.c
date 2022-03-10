@@ -19,6 +19,8 @@ int	check_double(t_stack *A)
 	int		dublicate;
 
 	temp = A;
+	if(!temp)
+		return (-1);
 	while (temp->next)
 	{
 		tmp = temp;

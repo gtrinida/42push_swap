@@ -42,31 +42,6 @@ int	check_long(char **av)
 	return (1);
 }
 
-int	check_zero(const char *str)
-{
-	size_t	i;
-	int		is_first;
-
-	i = 0;
-	is_first = 0;
-	if (ft_strlen(str) < 2)
-		return (1);
-	while (str[i])
-	{
-		if (!is_first && str[i] >= '1' && str[i] <= '9')
-			return (1);
-		if (str[i] >= '0')
-		{
-			is_first = 1;
-		}
-		if (is_first && str[i] == '0'
-			&& (str[i + 1] >= '0' && str[i + 1] <= '9'))
-			return (-1);
-		i++;
-	}
-	return (1);
-}
-
 int	check_int_utils(char **av, int *i, int j)
 {
 	while (av[*i][j] == '\t' || av[*i][j] == ' ')
@@ -98,9 +73,6 @@ int	check_int(char **av)
 	j = 0;
 	while (av[i])
 	{
-		check = check_zero(av[i]);
-		if (check == -1)
-			return (-1);
 		check = check_int_utils(av, &i, j);
 		if (check == -1)
 			return (-1);

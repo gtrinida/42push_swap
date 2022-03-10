@@ -6,11 +6,13 @@
 /*   By: gtrinida <gtrinida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 16:35:43 by gtrinida          #+#    #+#             */
-/*   Updated: 2022/03/07 09:47:48 by gtrinida         ###   ########.fr       */
+/*   Updated: 2022/03/11 00:28:27 by gtrinida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+// int it_is_empty()
 
 int	ft_verification_third(char **av)
 {	
@@ -40,7 +42,7 @@ int	ft_verification_second(char **argv, int *i, int j, t_basik *stacks)
 
 	split = ft_split(argv[*i], ' ');
 	while (split[j])
-	{
+	{		
 		condition = ft_verification_third(split);
 		if (condition == -1)
 		{
