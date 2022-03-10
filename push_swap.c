@@ -12,6 +12,35 @@
 
 #include "push_swap.h"
 
+
+int ft_valid_argv(char **argv)
+{
+	int i;
+	int j;
+	int	valid;
+
+	valid = 1;
+	i = 1;
+	j = 0;
+	while(argv[i])
+	{
+		while(argv[i][j])
+		{
+			if(argv[i][j] >= '0' && argv[i][j] <= '9')
+			{
+				valid = 1;
+				break ;
+			}
+			j++;
+		}
+		if (valid == 0)
+			return (0);
+		valid = 0;
+		i++;
+	}
+	return (1);
+}
+
 void	free_stack(t_stack **a)
 {
 	t_stack	*tmp;
@@ -63,9 +92,11 @@ int	main(int argc, char **argv)
 	ft_initialization(stacks);
 	if (!ft_verification(argv, stacks))
 	{
-		if (ft_stack_len(stacks, 1) < argc - 1)
+		if (!ft_valid_argv(argv))
 		{
 			write(1, "Error\n", 6);
+			free_stacks(stacks);
+			free(stacks);
 			return (-1);
 		}
 		ft_analysis(stacks);
