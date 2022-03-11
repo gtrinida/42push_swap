@@ -6,13 +6,11 @@
 /*   By: gtrinida <gtrinida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 16:35:43 by gtrinida          #+#    #+#             */
-/*   Updated: 2022/03/11 00:28:27 by gtrinida         ###   ########.fr       */
+/*   Updated: 2022/03/11 12:36:34 by gtrinida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// int it_is_empty()
 
 int	ft_verification_third(char **av)
 {	
@@ -23,10 +21,10 @@ int	ft_verification_third(char **av)
 	return (1);
 }
 
-int ft_verification_utils(int condition, t_basik *stacks)
+int	ft_verification_utils(int condition, t_basik *stacks)
 {
 	condition = check_double(stacks->a);
-	if (condition == - 1)
+	if (condition == -1)
 	{
 		write(1, "Error\n", 6);
 		free_stacks(stacks);
@@ -56,7 +54,7 @@ int	ft_verification_second(char **argv, int *i, int j, t_basik *stacks)
 	}
 	ft_strsfree(split);
 	condition = ft_verification_utils(condition, stacks);
-	if(condition == -1)
+	if (condition == -1)
 		return (-1);
 	return (0);
 }

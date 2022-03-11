@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_bonus.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gtrinida <gtrinida@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/11 12:34:49 by gtrinida          #+#    #+#             */
+/*   Updated: 2022/03/11 12:38:13 by gtrinida         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap_bonus.h"
 
 int	ft_is_it_sorted(t_basik *stacks)
@@ -13,8 +25,8 @@ int	ft_is_it_sorted(t_basik *stacks)
 		if (value > a->val)
 			return (0);
 	}
-	if(stacks->b)
-		return(0);
+	if (stacks->b)
+		return (0);
 	return (1);
 }
 
@@ -69,7 +81,7 @@ int	main(int argc, char **argv)
 	ft_initialization(stacks);
 	if (!ft_verification(argv, stacks))
 	{
-		if(!ft_is_sorted(stacks))
+		if (!ft_is_sorted(stacks))
 		{
 			ft_analysis(stacks);
 			if (!ft_is_it_sorted(stacks))

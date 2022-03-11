@@ -12,21 +12,20 @@
 
 #include "push_swap.h"
 
-
-int ft_valid_argv(char **argv)
+int	ft_valid_argv(char **argv)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 	int	valid;
 
 	valid = 1;
 	i = 1;
 	j = 0;
-	while(argv[i])
+	while (argv[i])
 	{
-		while(argv[i][j])
+		while (argv[i][j])
 		{
-			if(argv[i][j] >= '0' && argv[i][j] <= '9')
+			if (argv[i][j] >= '0' && argv[i][j] <= '9')
 			{
 				valid = 1;
 				break ;
