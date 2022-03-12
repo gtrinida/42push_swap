@@ -18,14 +18,14 @@ int	ft_valid_argv(char **argv)
 	int	j;
 	int	valid;
 
-	valid = 1;
+	valid = 0;
 	i = 1;
 	j = 0;
 	while (argv[i])
 	{
 		while (argv[i][j])
 		{
-			if (argv[i][j] >= '0' && argv[i][j] <= '9')
+			if (argv[i][j] == '-' || (argv[i][j] >= '0' && argv[i][j] <= '9'))
 			{
 				valid = 1;
 				break ;
