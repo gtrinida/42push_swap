@@ -6,7 +6,7 @@
 /*   By: gtrinida <gtrinida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 16:35:43 by gtrinida          #+#    #+#             */
-/*   Updated: 2022/03/11 12:36:34 by gtrinida         ###   ########.fr       */
+/*   Updated: 2022/03/13 01:08:06 by gtrinida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_verification_utils(int condition, t_basik *stacks)
 	condition = check_double(stacks->a);
 	if (condition == -1)
 	{
-		write(1, "Error\n", 6);
+		write(2, "Error\n", 6);
 		free_stacks(stacks);
 		return (-1);
 	}
@@ -44,7 +44,7 @@ int	ft_verification_second(char **argv, int *i, int j, t_basik *stacks)
 		condition = ft_verification_third(split);
 		if (condition == -1)
 		{
-			write(1, "Error\n", 6);
+			write(2, "Error\n", 6);
 			free_stacks(stacks);
 			ft_strsfree(split);
 			return (-1);

@@ -35,39 +35,46 @@ void	ft_sort_final(t_basik *stack)
 	return ;
 }
 
-void	push_min_max(t_basik *stack, t_stack **a, int flag)
+void	push_min_max(t_basik *stack, t_stack **a, int len)
 {
-	if ((*a)->val == stack->max)
+	// if ((*a)->val == stack->max)
+	// {
+	// 	flag = 1;
+	// 	ft_pb(stack);
+	// }	
+	// while ((*a)->val != stack->max && !flag)
+	// 	ft_ra(stack, 1);
+	// if (!flag)
+	// 	ft_pb(stack);
+	// flag = 0;
+	// if ((*a)->val == stack->min)
+	// {
+	// 	flag = 1;
+	// 	ft_pb(stack);
+	// }	
+	// while ((*a)->val != stack->min && !flag)
+	// 	ft_ra(stack, 1);
+	// if (!flag)
+	// 	ft_pb(stack);
+	// return ;
+	while (len)
 	{
-		flag = 1;
-		ft_pb(stack);
-	}	
-	while ((*a)->val != stack->max && !flag)
-		ft_ra(stack, 1);
-	if (!flag)
-		ft_pb(stack);
-	flag = 0;
-	if ((*a)->val == stack->min)
-	{
-		flag = 1;
-		ft_pb(stack);
-	}	
-	while ((*a)->val != stack->min && !flag)
-		ft_ra(stack, 1);
-	if (!flag)
-		ft_pb(stack);
-	return ;
+		if ((*a)->val != stack->max && (*a)->val != stack->min)
+			ft_ra(stack, 1);
+		else
+			ft_pb(stack);
+		len--;
+	}
 }
 
 void	ft_sort_four_five(t_basik *stack)
 {
 	t_stack	**a;
-	int		flag;
 	int		len;
 
-	flag = 0;
 	a = &(stack->a);
-	push_min_max(stack, a, flag);
+	len = ft_stack_len(stack, 1);
+	push_min_max(stack, a, len);
 	if (!ft_is_sorted(stack))
 	{
 		len = ft_check_values(stack);
