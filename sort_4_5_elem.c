@@ -37,26 +37,6 @@ void	ft_sort_final(t_basik *stack)
 
 void	push_min_max(t_basik *stack, t_stack **a, int len)
 {
-	// if ((*a)->val == stack->max)
-	// {
-	// 	flag = 1;
-	// 	ft_pb(stack);
-	// }	
-	// while ((*a)->val != stack->max && !flag)
-	// 	ft_ra(stack, 1);
-	// if (!flag)
-	// 	ft_pb(stack);
-	// flag = 0;
-	// if ((*a)->val == stack->min)
-	// {
-	// 	flag = 1;
-	// 	ft_pb(stack);
-	// }	
-	// while ((*a)->val != stack->min && !flag)
-	// 	ft_ra(stack, 1);
-	// if (!flag)
-	// 	ft_pb(stack);
-	// return ;
 	while (len)
 	{
 		if ((*a)->val != stack->max && (*a)->val != stack->min)
