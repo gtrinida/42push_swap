@@ -43,33 +43,3 @@ re: clean all
 
 norme:
 	norminette libft/*.c libft/*.h
-
-INCLUDES_BONUS = push_swap_bonus.h
-
-NAME_BONUS = checker
-SRCS_BONUS = push_swap_bonus.c \
-	analysis.c \
-	c_first.c \
-	c_second.c \
-	c_third.c \
-	c_utils.c \
-	sort_3_elem.c \
-	sort_4_5_elem.c \
-	sort_large.c \
-	sort_large_second.c \
-	sort_large_utils.c \
-	verification.c \
-	verification_utils.c \
-	atoi_overflow.c \
-	verification_second.c 
-
-OBJS_BONUS = $(SRCS_BONUS:%.c=%.o)
-
-%.o: %.c $(INCLUDES_BONUS)
-	$(CC) $(CFLAGS) -c $< -Ilibft
-
-$(NAME_BONUS): $(OBJS_BONUS)
-	@make -C libft
-	$(CC) -o $(NAME_BONUS) $(OBJS_BONUS) $(CFLAGS) -I$(INC) libft/libft.a
-
-bonus: $(NAME_BONUS)
